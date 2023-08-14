@@ -1,0 +1,121 @@
+.scrollable-panel {
+    overflow-y: auto;
+    max-height: 800px; /* Điều chỉnh độ cao tùy ý */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+}
+.left-panel {
+    flex: 1;
+    height: 100vh;
+}
+.centerPanel {
+    flex: 2;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.right-panel {
+    flex: 1;
+    height: 100vh;
+}
+.button_list-item {
+    margin-left: 5px;
+    cursor: pointer;
+}
+.button_list-item:hover {
+    background-color: #cccccc42;
+    outline: none;
+}
+.status-newfeed_create--btn {
+    outline: none;
+    border: 1px solid #cccccc53;
+    border-radius: 20px;
+    color: #000000c7;
+    background-color: #cccccc4f;
+    width: 100%;
+}
+.status-newfeed_create--btn:hover {
+    background-color: #cccccc42;
+}
+.right-nav--avatar {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.list-react {
+    list-style: none;
+    display: flex;
+}
+.list-react--item__comment-count {
+    margin-left: auto;
+}
+.list-react__button {
+    list-style: none;
+    justify-content: space-between;
+    display: flex;
+}
+.button-react {
+    width: 100%;
+    justify-content: center;
+}
+.button-react:hover {
+    background-color: #cccccc42;
+}
+.button-react--icon {
+    font-size: 1.3rem;
+}
+.left-panel__list {
+    list-style: none;
+    align-items: center;
+}
+.left-panel__list-item {
+    display: flex;
+    padding: 7px 0 7px 0;
+    width: 100%;
+    align-items: center;
+}
+.left-panel__list-item--label {
+    margin-left: 10px;
+}
+.left-panel__list-item:hover {
+    background-color: #cccccc42;
+}
+.newfriend-list {
+    list-style: none;
+    padding: 15px;
+}
+
+.newfriend-avatar {
+    width: 45px;
+    height: 45px;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.btn-newfriend {
+    padding: 10px 2px 10px 2px !important;
+    width: 45%;
+}
+.btn-search {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    color: #fff;
+}
+.person-contact {
+    padding: 7px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+.person-contact:hover {
+    background-color: #000000c7;
+    background-color: #cccccc42;
+    color: #fff;
+}
