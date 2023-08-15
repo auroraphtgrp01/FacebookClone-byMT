@@ -40,3 +40,5 @@
 <link rel="stylesheet" href="/assets/css/client_header.css">
 <link rel="stylesheet" href="/assets/css/content.css">
 {{-- <link rel="stylesheet" href="/assets/css/style.css"> --}}
+{{-- <link rel="stylesheet" type="text/css" href="/vuexy_assets/app-assets/css/pages/app-ecommerce.css"> --}}
+<link rel="stylesheet" type="text/css" href="/vuexy_assets/app-assets/css/plugins/extensions/ext-component-toastr.css">

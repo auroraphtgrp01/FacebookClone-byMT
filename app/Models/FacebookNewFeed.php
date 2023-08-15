@@ -10,8 +10,6 @@ class FacebookNewFeed extends Model
     use HasFactory;
     protected $table = 'facebook_new_feeds';
     protected $fillable = [
-        "avatar",
-        "username",
         "id_user",
         "time_create",
         "content",

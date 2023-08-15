@@ -13,7 +13,7 @@
                     <div class="row">
                         <!-- left profile info section -->
                         <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar left-panel"
-                            id="leftPanel">
+                            id="leftPanel" style="border-radius: 10px;">
                             <!-- about -->
                             <div class="card">
                                 <div class="card-body" style="padding-left: 0;padding-bottom: 0;">
@@ -111,6 +111,134 @@
 
                         <!-- center profile info section -->
                         <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel" id="centerPanel">
+                            <div class="col">
+                                <div class="cards">
+                                    <div class="mb-2" style="width: 100%;">
+                                        <div id="carouselExampleRide" class="carousel slide" style=""
+                                            data-bs-ride="true">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <div class="d-flex">
+                                                        <div class="story-main me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-main--img">
+                                                            s
+                                                            <div class="story--create_title">
+                                                                <button class="story--create-btn">
+                                                                    <i
+                                                                        class="story-main--create-icon fa-solid fa-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="story-main--title">
+                                                                <b>Tạo Tin</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="d-flex">
+                                                        <div class="story-item me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item me-2">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="story-item">
+                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                alt="" class="story-img">
+                                                            <div class="story-item--avatar">
+                                                                <img class="story-item--avatar-img"
+                                                                    src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="story-item--username">
+                                                                <b>Minh Tuấn</b>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {{-- Create NewFeed  --}}
                             <div class="card" style="height:150px;">
                                 <div class="card-body">
@@ -120,13 +248,15 @@
                                                 alt="" class="right-nav--avatar">
                                         </div>
                                         <div class="col-md">
-                                            <button class="btn status-newfeed_create--btn text-start">Tuấn
+                                            <button class="btn status-newfeed_create--btn text-start"
+                                                data-bs-toggle="modal" data-bs-target="#newStatus">Tuấn
                                                 ơi, bạn đang
                                                 nghĩ
                                                 gì
                                                 thế
                                                 ?</button>
                                         </div>
+
                                         <div class="dropdown-divider mt-2"></div>
                                         <ul class="d-flex">
                                             <li class="btn button_list-item d-flex">
@@ -165,12 +295,13 @@
                                         <div class="d-flex justify-content-start align-items-center mb-1">
                                             <!-- avatar -->
                                             <div class="avatar me-1">
-                                                <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-18.jpg"
-                                                    alt="avatar img" height="40" width="40" />
+                                                <img v-bind:src="v.avatar" alt="avatar img" height="40"
+                                                    width="40" />
                                             </div>
                                             <!--/ avatar -->
                                             <div class="profile-user-info">
-                                                <h6 class="mb-0"><b>@{{ v.username }}</b></h6>
+                                                <h6 class="mb-0"><b>@{{ v.lastname }} @{{ v.firstname }}</b>
+                                                </h6>
                                                 <small class="text">@{{ v.time_create }}</small>
                                             </div>
                                         </div>
@@ -219,13 +350,15 @@
                                         <div class="row d-flex justify-content-start align-items-center flex-wrap">
                                             <ul class="list-react__button d-flex">
                                                 <template v-if="v.like_status == 0">
-                                                    <li class="btn ps-10 d-flex button-react">
-                                                        <i class="fa-solid ficon fa-heart button-react--icon text-primary"></i>
+                                                    <li v-on:click="changeReact(v)" class="btn ps-10 d-flex button-react">
+                                                        <i
+                                                            class="fa-solid ficon fa-heart button-react--icon text-primary"></i>
                                                         <b class="ms-1 text-primary" style="margin-top: 1px;">Thích</b>
                                                     </li>
                                                 </template>
 
-                                                <li class="btn ps-10 d-flex button-react">
+                                                <li v-on:click="changeReact(v)" v-else
+                                                    class="btn ps-10 d-flex button-react">
                                                     <i class="fa-regular ficon fa-heart button-react--icon"></i>
                                                     <b class="ms-1" style="margin-top: 1px;">Thích</b>
                                                 </li>
@@ -284,14 +417,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="row d-flex " style="margin-top:7px;">
-                                                        <button class="btn btn-primary btn-newfriend me-2">Chấp
+                                                        <button class="btn btn-primary btn-newfriend"
+                                                            style="margin-right:7px;">Chấp
                                                             Nhận</button>
                                                         <button class="btn btn-danger btn-newfriend">Từ Chối</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <div class="dropdown-divider mt-2 mb-2"></div>
+                                        <div class="dropdown-divider mt-1 mb-1"></div>
 
                                         <li class="newfriend-list-item">
                                             <div class="row ">
@@ -313,7 +447,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="row d-flex " style="margin-top:7px;">
-                                                        <button class="btn btn-primary btn-newfriend me-2">Chấp
+                                                        <button class="btn btn-primary btn-newfriend"
+                                                            style="margin-right:7px;">Chấp
                                                             Nhận</button>
                                                         <button class="btn btn-danger btn-newfriend">Từ Chối</button>
                                                     </div>
@@ -337,29 +472,20 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-divider "></div>
+                                    <template v-for="(v,k) in listUser">
+                                        <div class="d-flex justify-content-start align-items-center person-contact">
+                                            <span class="avatar me-1">
+                                                <img class="round" v-bind:src="v.avatar" height="40" width="40">
+                                                <span class="avatar-status-online"></span></span>
+                                            <div class="profile-user-info">
+                                                <h6 class="mb-0 text-hover">@{{ v.lastname }}</h6>
+                                                <small class="text">Đang hoạt động</small>
+                                            </div>
 
-                                    <div class="d-flex justify-content-start align-items-center person-contact">
-                                        <span class="avatar me-1"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="40" width="40"><span
-                                                class="avatar-status-online"></span></span>
-                                        <div class="profile-user-info">
-                                            <h6 class="mb-0 text-hover">Auroraphtgrp</h6>
-                                            <small class="text">Đang hoạt động</small>
                                         </div>
+                                    </template>
 
-                                    </div>
-                                    <div class="d-flex justify-content-start align-items-center person-contact">
-                                        <span class="avatar me-1"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="40" width="40"><span
-                                                class="avatar-status-online"></span></span>
-                                        <div class="profile-user-info">
-                                            <h6 class="mb-0 text-hover">Auroraphtgrp</h6>
-                                            <small class="text">Đang hoạt động</small>
-                                        </div>
 
-                                    </div>
                                 </div>
                             </div>
                             <!--/ suggestion -->
@@ -370,8 +496,71 @@
                         </div>
                         <!--/ right profile info section -->
                     </div>
-
-
+                    <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-labelledby="myModalLabel33"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="d-flex mt-1">
+                                    <h3 class="modal-title" style="margin: auto"><b>Tạo bài viết</b></h3>
+                                </div>
+                                <div class="dropdown-divider mt-1"></div>
+                                <div class="modal-body">
+                                    <div class="d-flex mb-2">
+                                        <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=2b6aad&amp;_nc_ohc=qj0DWeBr16wAX-XhZPr&amp;_nc_ht=scontent.fdad3-6.fna&amp;oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&amp;oe=64DDB486"
+                                            alt="" class="newfriend-avatar">
+                                        <div class="modal-item--list ms-1">
+                                            <h5><b>Minh Tuấn</b></h5>
+                                            <div class="dropdown" style="margin-top: -5px; ">
+                                                <button class="btn btn-sm"
+                                                    style="background-color: #ccc; padding: 5px 5px 5px 5px;"
+                                                    data-bs-toggle="dropdown">
+                                                    <span class="" style="font-size: 12px;"><i
+                                                            class="fa-solid fa-earth-americas"></i> Công khai</span>
+                                                </button>
+                                                <ul class="dropdown-menu" style="padding:0; ">
+                                                    <li><a class="dropdown-item" style="padding:5px; font-size: 12px;"
+                                                            href="#"> <i
+                                                                class="me-1 fa-solid fa-earth-americas"></i>Công
+                                                            khai</a></li>
+                                                    <li><a class="dropdown-item" style="padding:5px; font-size: 12px;"
+                                                            href="#"> <i class="me-1 fa-solid fa-user-group"></i>
+                                                            Bạn
+                                                            bè</a></li>
+                                                    <li><a class="dropdown-item" style="padding:5px; font-size: 12px;"
+                                                            href="#"> <i class="me-1 fa-solid fa-lock"></i> Chỉ mình
+                                                            tôi</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <textarea name="" class="form-control" id="" cols="30" rows="5"
+                                        placeholder="Bạn đang nghĩ gì thế ? " style=""></textarea>
+                                    <div class="d-flex">
+                                        <button class="btn mt-2 btn-outline-success"
+                                            style="padding:8px; margin: auto; margin-right: 4px;"><img
+                                                class="x1b0d499 xl1xv1r"
+                                                src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png"
+                                                alt="" style="height: 24px; width: 24px;"> Thêm Ảnh</button>
+                                        <button class="btn mt-2 btn-outline-primary"
+                                            style="padding:8px; margin: auto; margin-right: 4px;"><img
+                                                class="x1b0d499 xl1xv1r"
+                                                src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/MqTJr_DM3Jg.png"
+                                                alt="" style="height: 24px; width: 24px;"> Gắn Thẻ </button>
+                                        <button class="btn mt-2 btn-outline-warning" style="padding:8px; margin: auto;">
+                                            <img class="x1b0d499 xl1xv1r"
+                                                src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/yMDS19UDsWe.png"
+                                                alt="" style="height: 24px; width: 24px;"> Cảm xúc / Hoạt
+                                            Động </button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex">
+                                    <button type="button" class="btn btn-primary" style="margin: auto; width: 100%"
+                                        data-bs-dismiss="modal">Đăng
+                                        Bài</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <!--/ profile info section -->
             </div>

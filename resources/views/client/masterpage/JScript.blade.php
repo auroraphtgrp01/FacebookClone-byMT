@@ -1,5 +1,6 @@
 <script src="/vuexy_assets/app-assets/vendors/js/vendors.min.js"></script>
 <!-- BEGIN Vendor JS-->
+<script src="/vuexy_assets/app-assets/vendors/js/vendors.min.js"></script>
 
 <!-- BEGIN: Page Vendor JS-->
 <script src="/vuexy_assets/app-assets/vendors/js/ui/jquery.sticky.js"></script>

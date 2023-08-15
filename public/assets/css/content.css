@@ -115,7 +115,124 @@
     margin-top: 5px;
 }
 .person-contact:hover {
-    background-color: #000000c7;
+    background-color: #cccccc64;
+}
+.story-item {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 230px;
+    cursor: pointer;
+}
+.story-img {
+    width: 150px;
+    height: 230px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    filter: brightness(80%);
+}
+.story-item--avatar {
+    position: absolute;
+    border-radius: 30px;
+    border: #2475ee solid 4px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.story-item--avatar-img {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+.story-item--username {
+    position: absolute;
+    color: #ffffffde;
+    margin-top: 205px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+}
+.story-main {
+    z-index: 1;
+    display: flex;
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 230px;
+    cursor: pointer;
+}
+
+.story-main--img {
+    position: absolute;
+    width: 150px;
+    height: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    filter: brightness(80%);
+}
+
+/* margin-top: 160px;
+margin-left: 55px; */
+
+.story--create_title {
+    position: absolute;
+    color: #ffffffde;
+    margin-top: 170px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    width: 150px;
+    height: 60px;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+}
+.story--create-btn:hover {
+    background-color: #225aad;
+}
+.story--create-btn {
+    margin-left: 55px;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    border-radius: 40px;
+    background-color: #2475ee;
+    outline: none;
+    border: none;
+    margin-top: -15px;
+}
+.story-main--create-icon {
+    font-size: 1.2rem;
+    color: #ffffffde;
+}
+.story-main--title {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 50px;
+    font-size: 0.8rem;
+    color: #000000a5;
+}
+.story-item:hover {
+    filter: brightness(80%);
+}
+.story-main:hover {
+    filter: brightness(80%);
+}
+.button-border {
+    width: 30px;
+    height: 30px;
     background-color: #cccccc42;
-    color: #fff;
+    padding: 0;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.button-border:hover {
+    background-color: #cccccc88;
+}
+.button_border--outline {
+    background-color: #cccccc42;
+    border-radius: 40px;
+}
+.button_border--outline:hover {
+    background-color: #ccccccaa;
 }

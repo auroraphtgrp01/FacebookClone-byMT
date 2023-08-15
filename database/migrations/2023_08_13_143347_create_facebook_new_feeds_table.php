@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('facebook_new_feeds', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar');
-            $table->string('username');
+            // $table->string('avatar');
+            // $table->string('username');
             $table->string('id_user');
             $table->dateTime('time_create');
             $table->text('content');
-            $table->string('hinh_anh');
+            $table->text('hinh_anh');
             $table->string('count_react');
             $table->string('count_comment');
             $table->integer('like_status')->comment('0-> like ; 1-> unlike');

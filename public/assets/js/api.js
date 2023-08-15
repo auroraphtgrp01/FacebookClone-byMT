@@ -5,9 +5,12 @@ $(document).ready(function () {
             listNewFeed: {},
             imgNewFeed: {},
             img: '',
+            listUser: {},
         },
         created() {
+            this.loadUserData();
             this.loadNewFeed();
+
         },
         methods: {
             loadImg(arr) {
@@ -43,6 +46,22 @@ $(document).ready(function () {
                         // $.each(res.response.data.errors, function (k, v) {
                         //     toastr.error(v[0], 'Error');
                         // });
+                    });
+            },
+            loadUserData() {
+                axios
+                    .post('/api/newfeed/data-user',)
+                    .then((res) => {
+                        this.listUser = res.data.data;
+                        console.log(this.listUser);
+
+                    });
+            },
+            changeReact(payload) {
+                axios
+                    .post('/api/newfeed/change-react', payload)
+                    .then((res) => {
+                        this.loadNewFeed();
                     });
             }
         },

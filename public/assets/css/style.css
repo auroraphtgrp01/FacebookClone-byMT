@@ -88,8 +88,7 @@ body {
     cursor: pointer;
 }
 .story-img {
-    width: 150px;
-    height: 230px;
+
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -111,7 +110,6 @@ body {
 .story-item--username {
     position: absolute;
     color: #ffffffde;
-    margin-top: 205px;
     font-size: 0.7rem;
     margin-left: 10px;
 }
@@ -120,8 +118,6 @@ body {
     display: flex;
     position: relative;
     display: flex;
-    width: 150px;
-    height: 230px;
     cursor: pointer;
 }
 
