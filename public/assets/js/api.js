@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    toastr.options.showMethod = 'slideDown';
+    toastr.options.progressBar = true;
     new Vue({
         el: '#app',
         data: {
@@ -9,9 +11,7 @@ $(document).ready(function () {
             listRequest: {},
         },
         created() {
-            this.loadUserData();
             this.loadNewFeed();
-            this.getListRequest();
 
         },
         methods: {
@@ -42,6 +42,9 @@ $(document).ready(function () {
                         // this.imgNewFeed = this.createImageObject(this.listNewFeed);
                         // console.log(this.imgNewFeed);
                         console.log(this.listNewFeed);
+                        this.getListRequest();
+                        this.loadUserData();
+
 
                     })
                     .catch((res) => {
@@ -72,6 +75,29 @@ $(document).ready(function () {
                     .then((res) => {
                         this.listRequest = res.data.data;
                         console.log(this.listRequest);
+                    });
+            },
+            acceptFriend(payload) {
+                axios
+                    .post('/api/newfeed/accept-friend', payload)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        }
+                    });
+            },
+            refuseFriend(payload) {
+                axios
+                    .post('/api/newfeed/refuse-friend', payload)
+                    .then((res) => {
+
+                        if (res.data.status) {
+                            toastr.error(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        } else {
+                            toastr.error(res.data.message, 'Thất Bại');
+                        }
                     });
             }
         },

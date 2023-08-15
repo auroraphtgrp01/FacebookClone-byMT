@@ -419,9 +419,11 @@
                                                         </div>
                                                         <div class="row d-flex " style="margin-top:7px;">
                                                             <button class="btn btn-primary btn-newfriend"
-                                                                style="margin-right:7px;">Chấp
+                                                                style="margin-right:7px;"
+                                                                v-on:click="acceptFriend(v)">Chấp
                                                                 Nhận</button>
-                                                            <button class="btn btn-danger btn-newfriend">Từ Chối</button>
+                                                            <button class="btn btn-danger btn-newfriend"
+                                                                v-on:click="refuseFriend(v)">Từ Chối</button>
                                                         </div>
                                                     </div>
                                                 </div>

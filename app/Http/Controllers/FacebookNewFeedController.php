@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FacebookNewFeed;
+use App\Models\FriendRequest;
 use App\Models\Relationship;
 use App\Models\UserFacebook;
 use Illuminate\Http\Request;
@@ -45,6 +46,42 @@ class FacebookNewFeedController extends Controller
                 $newfeed->like_status = 0;
             }
             $newfeed->save();
+        }
+    }
+    public function acceptFriend(Request $request)
+    {
+        $requestFr = FriendRequest::find($request->id);
+        if ($requestFr) {
+            $userRequest = UserFacebook::find($requestFr['id_user_request']);
+            $userReceive = UserFacebook::find($requestFr['id_user_receive'])->id;
+            if ($userReceive && $userRequest) {
+                $relationship = Relationship::create([
+                    'user_x' => $userRequest->id,
+                    'user_y' => $userReceive,
+                ]);
+                $relationship->save();
+                $requestFr->delete();
+                return response()->json([
+                    'status' => 1,
+                    'message' => 'Đã Chấp Nhận Lời Mời Kết Bạn Của ' . $userRequest->lastname
+                ]);
+            }
+        }
+    }
+    public function refuseFriend(Request $request)
+    {
+        $requestFr = FriendRequest::find($request->id);
+        if ($requestFr) {
+            $requestFr->delete();
+            return response()->json([
+                'status' => 1,
+                'message' => 'Đã Từ Chối Lời Mời Kết Bạn !'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Có Lỗi Trong Quá Trình Xử Lý !'
+            ]);
         }
     }
 }
