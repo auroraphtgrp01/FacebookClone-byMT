@@ -6,10 +6,12 @@ $(document).ready(function () {
             imgNewFeed: {},
             img: '',
             listUser: {},
+            listRequest: {},
         },
         created() {
             this.loadUserData();
             this.loadNewFeed();
+            this.getListRequest();
 
         },
         methods: {
@@ -62,6 +64,14 @@ $(document).ready(function () {
                     .post('/api/newfeed/change-react', payload)
                     .then((res) => {
                         this.loadNewFeed();
+                    });
+            },
+            getListRequest() {
+                axios
+                    .post('/api/newfeed/get-list-request',)
+                    .then((res) => {
+                        this.listRequest = res.data.data;
+                        console.log(this.listRequest);
                     });
             }
         },

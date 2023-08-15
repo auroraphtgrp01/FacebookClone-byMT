@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FacebookNewFeed;
+use App\Models\Relationship;
 use App\Models\UserFacebook;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,17 @@ class FacebookNewFeedController extends Controller
     }
     public function dataUser()
     {
-        $data = UserFacebook::all();
+        $userLoginID = 1;
+        $data = UserFacebook::join('relationships', function ($join) use ($userLoginID) {
+            $join->on('user_facebooks.id', '=', 'relationships.user_x')
+                ->where('relationships.user_y', '=', $userLoginID)
+                ->orWhere(function ($query) use ($userLoginID) {
+                    $query->on('user_facebooks.id', '=', 'relationships.user_y')
+                        ->where('relationships.user_x', '=', $userLoginID);
+                });
+        })
+            ->select('user_facebooks.*')
+            ->get();
         return response()->json([
             'data' => $data
         ]);

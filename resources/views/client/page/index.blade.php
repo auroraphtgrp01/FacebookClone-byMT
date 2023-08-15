@@ -397,64 +397,41 @@
                                 <div class="card-body" style="padding: 0;">
                                     <h5 style="padding: 15px 0 0 15px;" class="mb-0"><b>Lời Mời Kết Bạn</b></h5>
                                     <ul class="newfriend-list" style="padding-right: 30px;">
-                                        <li class="newfriend-list-item">
-                                            <div class="row ">
-                                                <div class="col-md-3" style="margin: auto;">
-                                                    <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
-                                                        alt="" class="newfriend-avatar">
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="row d-flex" style="justify-content: space-between;">
-                                                        <div class="col-md-7" style=" padding-left: 0;">
-                                                            <h6 class="mb-0" style="width: 100%;"><b>Lê
-                                                                    Minh Tuấn</b>
-                                                            </h6>
+                                        <template v-for="(v,k) in listRequest">
+                                            <li class="newfriend-list-item">
+                                                <div class="row ">
+                                                    <div class="col-md-3" style="margin: auto;">
+                                                        <img v-bind:src="v.avatar" alt=""
+                                                            class="newfriend-avatar">
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="row d-flex" style="justify-content: space-between;">
+                                                            <div class="col-md-7" style=" padding-left: 0;">
+                                                                <h6 class="mb-0" style="width: 100%;">
+                                                                    <b>@{{ v.lastname }}</b>
+                                                                </h6>
+                                                            </div>
+                                                            <div class="col-md">
+                                                                <h6 class="mb-0 text-muted text-end" style="width: 100%;">
+                                                                    22 giờ
+                                                                </h6>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md">
-                                                            <h6 class="mb-0 text-muted text-end" style="width: 100%;">
-                                                                22 giờ
-                                                            </h6>
+                                                        <div class="row d-flex " style="margin-top:7px;">
+                                                            <button class="btn btn-primary btn-newfriend"
+                                                                style="margin-right:7px;">Chấp
+                                                                Nhận</button>
+                                                            <button class="btn btn-danger btn-newfriend">Từ Chối</button>
                                                         </div>
                                                     </div>
-                                                    <div class="row d-flex " style="margin-top:7px;">
-                                                        <button class="btn btn-primary btn-newfriend"
-                                                            style="margin-right:7px;">Chấp
-                                                            Nhận</button>
-                                                        <button class="btn btn-danger btn-newfriend">Từ Chối</button>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <div class="dropdown-divider mt-1 mb-1"></div>
+                                            </li>
+                                            <div class="dropdown-divider mt-1 mb-1"></div>
 
-                                        <li class="newfriend-list-item">
-                                            <div class="row ">
-                                                <div class="col-md-3" style="margin: auto;">
-                                                    <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
-                                                        alt="" class="newfriend-avatar">
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="row d-flex" style="justify-content: space-between;">
-                                                        <div class="col-md-7" style=" padding-left: 0;">
-                                                            <h6 class="mb-0" style="width: 100%;"><b>Lê
-                                                                    Minh Tuấn</b>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="col-md">
-                                                            <h6 class="mb-0 text-muted text-end" style="width: 100%;">
-                                                                22 giờ
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row d-flex " style="margin-top:7px;">
-                                                        <button class="btn btn-primary btn-newfriend"
-                                                            style="margin-right:7px;">Chấp
-                                                            Nhận</button>
-                                                        <button class="btn btn-danger btn-newfriend">Từ Chối</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        </template>
+
+
+
                                     </ul>
                                 </div>
                             </div>
