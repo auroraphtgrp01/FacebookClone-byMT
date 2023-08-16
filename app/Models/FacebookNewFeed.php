@@ -11,7 +11,6 @@ class FacebookNewFeed extends Model
     protected $table = 'facebook_new_feeds';
     protected $fillable = [
         "id_user",
-        "time_create",
         "content",
         "hinh_anh",
         "count_react",

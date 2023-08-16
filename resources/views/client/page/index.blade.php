@@ -19,9 +19,8 @@
                                 <div class="card-body" style="padding-left: 0;padding-bottom: 0;">
                                     <ul class="left-panel__list">
                                         <li class="btn left-panel__list-item">
-                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
-                                                alt="" class="right-nav--avatar">
-                                            <h6 class="mb-0 left-panel__list-item--label"><b>Minh Tuấn</b></h6>
+                                            <img v-bind:src="userInfo.avatar" alt="" class="right-nav--avatar">
+                                            <h6 class="mb-0 left-panel__list-item--label"><b>@{{ userInfo.lastname }}</b></h6>
                                         </li>
                                         <li class="btn left-panel__list-item">
                                             <i data-visualcompletion="css-img" class=""
@@ -120,8 +119,8 @@
                                                 <div class="carousel-item active">
                                                     <div class="d-flex">
                                                         <div class="story-main me-2">
-                                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
-                                                                alt="" class="story-main--img">
+                                                            <img v-bind:src="userInfo.avatar" alt=""
+                                                                class="story-main--img">
                                                             s
                                                             <div class="story--create_title">
                                                                 <button class="story--create-btn">
@@ -244,12 +243,11 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&_nc_cat=100&ccb=1-7&_nc_sid=2b6aad&_nc_ohc=qj0DWeBr16wAX-XhZPr&_nc_ht=scontent.fdad3-6.fna&oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&oe=64DDB486"
-                                                alt="" class="right-nav--avatar">
+                                            <img v-bind:src="userInfo.avatar" alt="" class="right-nav--avatar">
                                         </div>
                                         <div class="col-md">
                                             <button class="btn status-newfeed_create--btn text-start"
-                                                data-bs-toggle="modal" data-bs-target="#newStatus">Tuấn
+                                                data-bs-toggle="modal" data-bs-target="#newStatus">@{{ userInfo.lastname }}
                                                 ơi, bạn đang
                                                 nghĩ
                                                 gì
@@ -302,12 +300,12 @@
                                             <div class="profile-user-info">
                                                 <h6 class="mb-0"><b>@{{ v.lastname }} @{{ v.firstname }}</b>
                                                 </h6>
-                                                <small class="text">@{{ v.time_create }}</small>
+                                                <small class="text">@{{ formatDate(v.created_at) }}</small>
                                             </div>
                                         </div>
-                                        <p v-html="v.content" class="card-text">
+                                        <div v-html="v.content" class="card-text">
 
-                                        </p>
+                                        </div>
                                         <!-- post img -->
                                         <img class="img-fluid rounded mb-75"
                                             style="width: 100%; height: 350px; background-size: cover"
@@ -471,12 +469,12 @@
 
                             <!-- polls card -->
 
+
                             <!--/ polls card -->
                         </div>
                         <!--/ right profile info section -->
                     </div>
-                    <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-labelledby="myModalLabel33"
-                        aria-hidden="true">
+                    <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="d-flex mt-1">
@@ -485,10 +483,9 @@
                                 <div class="dropdown-divider mt-1"></div>
                                 <div class="modal-body">
                                     <div class="d-flex mb-2">
-                                        <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/366670743_1504730726732988_8894476486680721584_n.jpg?stp=dst-jpg_s320x320&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=2b6aad&amp;_nc_ohc=qj0DWeBr16wAX-XhZPr&amp;_nc_ht=scontent.fdad3-6.fna&amp;oh=00_AfCoqXOB-bsRrMuSis4l5c2_B8iBxd2yrVPOrPPeyYAFXg&amp;oe=64DDB486"
-                                            alt="" class="newfriend-avatar">
+                                        <img v-bind:src="userInfo.avatar" alt="" class="newfriend-avatar">
                                         <div class="modal-item--list ms-1">
-                                            <h5><b>Minh Tuấn</b></h5>
+                                            <h5><b>@{{ userInfo.lastname }}</b></h5>
                                             <div class="dropdown" style="margin-top: -5px; ">
                                                 <button class="btn btn-sm"
                                                     style="background-color: #ccc; padding: 5px 5px 5px 5px;"
@@ -515,11 +512,14 @@
                                     <textarea name="" class="form-control" id="" cols="30" rows="5"
                                         placeholder="Bạn đang nghĩ gì thế ? " style=""></textarea>
                                     <div class="d-flex">
-                                        <button class="btn mt-2 btn-outline-success"
+                                        <button v-on:click="showUploader()"
+                                            class="select-files btn mt-2 btn-outline-success"
                                             style="padding:8px; margin: auto; margin-right: 4px;"><img
                                                 class="x1b0d499 xl1xv1r"
                                                 src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png"
                                                 alt="" style="height: 24px; width: 24px;"> Thêm Ảnh</button>
+                                        <input v-on:change="handleFileChange" type="file" name=""
+                                            ref="fileInput" class="form-control d-none" id="">
                                         <button class="btn mt-2 btn-outline-primary"
                                             style="padding:8px; margin: auto; margin-right: 4px;"><img
                                                 class="x1b0d499 xl1xv1r"
@@ -534,7 +534,7 @@
                                 </div>
                                 <div class="modal-footer d-flex">
                                     <button type="button" class="btn btn-primary" style="margin: auto; width: 100%"
-                                        data-bs-dismiss="modal">Đăng
+                                        data-bs-dismiss="modal" v-on:click="uploadStatus()">Đăng
                                         Bài</button>
                                 </div>
                             </div>

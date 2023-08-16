@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIAuthenticationController;
 use App\Http\Controllers\APIFriendRequestController;
 use App\Http\Controllers\FacebookNewFeedController;
 use Illuminate\Http\Request;
@@ -13,4 +14,10 @@ Route::group(['prefix' => '/newfeed'], function () {
     Route::post('/change-react', [FacebookNewFeedController::class, 'changeReact']);
     Route::post('/accept-friend', [FacebookNewFeedController::class, 'acceptFriend']);
     Route::post('/refuse-friend', [FacebookNewFeedController::class, 'refuseFriend']);
+    Route::post('/upload-status', [FacebookNewFeedController::class, 'uploadStatus']);
+    Route::post('/log-out', [FacebookNewFeedController::class, 'logout']);
+});
+Route::group(['prefix' => '/authentication'], function () {
+    Route::post('/login', [APIAuthenticationController::class, 'login']);
+    Route::post('/register', [APIAuthenticationController::class, 'register']);
 });

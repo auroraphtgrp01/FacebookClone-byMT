@@ -7,16 +7,19 @@ use App\Models\FriendRequest;
 use App\Models\Relationship;
 use App\Models\UserFacebook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class FacebookNewFeedController extends Controller
 {
-    public function data()
+    public function data(Request $request)
     {
+        $login = Session::get('auth');
         $data = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
             ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar')
             ->get();
         return response()->json([
-            'data' => $data
+            'data' => $data,
+            'user' => $login,
         ]);
     }
     public function dataUser()
@@ -83,5 +86,19 @@ class FacebookNewFeedController extends Controller
                 'message' => 'Có Lỗi Trong Quá Trình Xử Lý !'
             ]);
         }
+    }
+    public function uploadStatus(Request $request)
+    {
+        $file = $request->file('file');
+        dd($file);
+    }
+    public function logout(Request $request)
+    {
+        session()->forget('auth');
+        return response()->json([
+            'status' => 1,
+            'redirect' => route('homepage'),
+            'messag' =>  'Đã Đăng Xuất Thành Công !'
+        ]);
     }
 }

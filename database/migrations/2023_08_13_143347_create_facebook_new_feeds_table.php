@@ -16,7 +16,7 @@ return new class extends Migration
             // $table->string('avatar');
             // $table->string('username');
             $table->string('id_user');
-            $table->dateTime('time_create');
+            // $table->dateTime('time_create');
             $table->text('content');
             $table->text('hinh_anh');
             $table->string('count_react');

@@ -17,9 +17,8 @@ class UserFacebook extends Model
         'email',
         'phone',
         'dateofbirth',
-        'friend',
-        'count_follow',
         'about',
+        'count_follow',
         'avatar',
     ];
 }

@@ -2,7 +2,7 @@
     data-nav="brand-center">
     <div class="navbar-container d-flex content text-center" style="">
         <div class="col-md-3 searchBox d-flex">
-            <i class="fa-brands fa-facebook text-primary icon11 me-2"></i>
+            <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
             <div class="input-group input-group-merge">
                 <span class="input-group-text"><i data-feather='search'></i></span>
                 <input type="text" class="form-control phone-number-mask" placeholder="Tìm Kiếm Trên Facebook">
@@ -90,7 +90,7 @@
                                             <p class="media-heading"><span class="fw-bolder"><b>Minh Tuan</b></span>
                                             </p>
                                             <p class="media-heading">
-                                                <span class="">Hôm nay là thứ 3</span>
+                                                <span class=""></span>
                                             </p>
                                         </div>
                                     </div>
@@ -158,12 +158,10 @@
                             <a class="d-flex" href="#">
                                 <div class="list-item d-flex align-items-start">
                                     <div class="me-1">
-                                        <div class="avatar"><img
-                                                src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-15.jpg"
-                                                alt="avatar" width="40" height="40"></div>
+                                        <div class="avatar"><img alt="avatar" width="40" height="40"></div>
                                     </div>
                                     <div class="list-item-body flex-grow-1" style="margin: auto;">
-                                        <p class="media-heading"><span class="fw-bolder">Auroraphtgrp đã bình luậnt về
+                                        <p class="media-heading"><span class="fw-bolder">Auroraphtgrp đã bình luận về
                                                 bài viết của bạn
                                             </span></p>
                                         <h6 style="font-size: 0.8rem; margin-top: 5px;">18 giờ trước</h6>
@@ -178,8 +176,7 @@
                                                 alt="avatar" width="40" height="40"></div>
                                     </div>
                                     <div class="list-item-body flex-grow-1" style="margin: auto;">
-                                        <p class="media-heading"><span class="fw-bolder">Auroraphtgrp đã bình luậnt về
-                                                bài viết của bạn
+                                        <p class="media-heading"><span class="fw-bolder">
                                             </span></p>
                                         <h6 style="font-size: 0.8rem; margin-top: 5px;">18 giờ trước</h6>
                                     </div>
@@ -194,18 +191,18 @@
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <span class="avatar"><img class="round"
-                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg" alt="avatar"
-                                height="40" width="40"><span class="avatar-status-online"></span></span>
+                        <span class="avatar"><img class="round" v-bind:src="userInfo.avatar" height="40"
+                                width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                         <a class="dropdown-item" href="#">
                             <i class="me-50" data-feather="user"></i>
-                            Profile</a>
+                            Trang Cá Nhân</a>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="me-50" data-feather="power"></i>
-                            Logout</a>
+                        <a v-on:click="logOut()" class="dropdown-item" href="#"><i class="me-50"
+                                data-feather="power"></i>
+                            Đăng Xuất</a>
                     </div>
                 </li>
             </ul>

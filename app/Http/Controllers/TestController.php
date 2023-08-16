@@ -10,4 +10,8 @@ class TestController extends Controller
     {
         return view('client.page.index');
     }
+    public function index1()
+    {
+        return view('client.page.authentication');
+    }
 }

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->date('dateofbirth');
-            $table->integer('count_follow');
-            $table->text('about')->nullable();
+            $table->integer('count_follow')->nullable();
             $table->text('avatar');
+            $table->text('about');
             $table->timestamps();
         });
     }

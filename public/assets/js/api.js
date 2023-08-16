@@ -2,13 +2,15 @@ $(document).ready(function () {
     toastr.options.showMethod = 'slideDown';
     toastr.options.progressBar = true;
     new Vue({
-        el: '#app',
+        el: '#appNewFeed',
         data: {
             listNewFeed: {},
             imgNewFeed: {},
             img: '',
             listUser: {},
             listRequest: {},
+            selectedFileName: '',
+            userInfo: {},
         },
         created() {
             this.loadNewFeed();
@@ -39,13 +41,11 @@ $(document).ready(function () {
                     .post('/api/newfeed/data')
                     .then((res) => {
                         this.listNewFeed = res.data.data;
+                        this.userInfo = res.data.user;
                         // this.imgNewFeed = this.createImageObject(this.listNewFeed);
                         // console.log(this.imgNewFeed);
-                        console.log(this.listNewFeed);
                         this.getListRequest();
                         this.loadUserData();
-
-
                     })
                     .catch((res) => {
                         // $.each(res.response.data.errors, function (k, v) {
@@ -53,13 +53,17 @@ $(document).ready(function () {
                         // });
                     });
             },
+            formatDate(dateTimeString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateTime = new Date(dateTimeString);
+                const formattedDate = dateTime.toLocaleDateString('vi-VN', options);
+                return formattedDate;
+            },
             loadUserData() {
                 axios
                     .post('/api/newfeed/data-user',)
                     .then((res) => {
                         this.listUser = res.data.data;
-                        console.log(this.listUser);
-
                     });
             },
             changeReact(payload) {
@@ -74,7 +78,6 @@ $(document).ready(function () {
                     .post('/api/newfeed/get-list-request',)
                     .then((res) => {
                         this.listRequest = res.data.data;
-                        console.log(this.listRequest);
                     });
             },
             acceptFriend(payload) {
@@ -98,6 +101,45 @@ $(document).ready(function () {
                         } else {
                             toastr.error(res.data.message, 'Thất Bại');
                         }
+                    });
+            },
+            showUploader() {
+                this.$refs.fileInput.click();
+            },
+            handleFileChange(event) {
+                const selectedFile = event.target.files[0];
+                if (selectedFile) {
+                    this.selectedFileName = selectedFile.name;
+                }
+            },
+            uploadStatus() {
+                if (this.selectedFileName) {
+                    let formData = new FormData();
+                    formData.append('file', this.selectedFileName);
+                    axios
+                        .post('/api/newfeed/upload-status', formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        })
+                        .then((res) => { });
+                }
+            },
+            logOut() {
+                axios
+                    .post('/api/newfeed/log-out',)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            setTimeout(() => {
+                                window.location.href = res.data.redirect;
+                            }, 1000);
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
                     });
             }
         },
