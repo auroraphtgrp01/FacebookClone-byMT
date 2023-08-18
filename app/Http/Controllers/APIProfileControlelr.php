@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FacebookNewFeed;
 use App\Models\FriendRequest;
+use App\Models\PictureOfUser;
 use App\Models\Relationship;
 use App\Models\UserFacebook;
 use Exception;
@@ -23,8 +25,14 @@ class APIProfileControlelr extends Controller
         $profile = UserFacebook::where('username', $request->username)->first();
         if ($profile) {
             $userID = $profile->id;
-            $userLoginID = Session::get('auth')->id;
 
+            $dataNewFeed = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
+                ->join('picture_of_users', 'picture_of_users.id', 'facebook_new_feeds.id_picture')
+                ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar', 'user_facebooks.username', 'picture_of_users.picture')
+                ->where('facebook_new_feeds.id_user', $userID)
+                ->get();
+            $picture = PictureOfUser::where('id_user', $userID)->get();
+            $userLoginID = Session::get('auth')->id;
             $data = UserFacebook::join('relationships', function ($join) use ($userID) {
                 $join->on('user_facebooks.id', '=', 'relationships.user_x')
                     ->where('relationships.user_y', '=', $userID)
@@ -47,6 +55,8 @@ class APIProfileControlelr extends Controller
                     'friend' => $data,
                     'user' => $profile,
                     'status_friend' => 0,
+                    'picture' => $picture,
+                    'newfeed' => $dataNewFeed,
                 ]);
             }
             if ($check_relationship) {
@@ -54,12 +64,18 @@ class APIProfileControlelr extends Controller
                     'friend' => $data,
                     'user' => $profile,
                     'status_friend' => 1,
+                    'picture' => $picture,
+                    'newfeed' => $dataNewFeed,
+
                 ]);
             } else if ($check_request == null && $check_add == null) {
                 return response()->json([
                     'friend' => $data,
                     'user' => $profile,
                     'status_friend' => 3,
+                    'picture' => $picture,
+                    'newfeed' => $dataNewFeed,
+
                 ]);
             }
             if ($check_add && $check_request == null) {
@@ -67,6 +83,9 @@ class APIProfileControlelr extends Controller
                     'friend' => $data,
                     'user' => $profile,
                     'status_friend' => 4,
+                    'picture' => $picture,
+                    'newfeed' => $dataNewFeed,
+
                 ]);
             }
             if ($check_add == null && $check_request) {
@@ -74,6 +93,9 @@ class APIProfileControlelr extends Controller
                     'friend' => $data,
                     'user' => $profile,
                     'status_friend' => 2,
+                    'picture' => $picture,
+                    'newfeed' => $dataNewFeed,
+
                 ]);
             }
             // if ($check == null) {

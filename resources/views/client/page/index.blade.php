@@ -301,10 +301,10 @@
                                         <div class="card-body" style="padding-bottom: 0;">
                                             <div class="d-flex justify-content-start align-items-center mb-1">
                                                 <!-- avatar -->
-                                                <div class="avatar me-1">
+                                                <a v-bind:href="'/profile/' + v.username" class="avatar me-1">
                                                     <img v-bind:src="v.avatar" alt="avatar img" height="40"
                                                         width="40" />
-                                                </div>
+                                                </a>
                                                 <!--/ avatar -->
                                                 <div class="profile-user-info">
                                                     <h6 class="mb-0"><b>@{{ v.lastname }} @{{ v.firstname }}</b>
@@ -312,13 +312,13 @@
                                                     <small class="text">@{{ formatDate(v.created_at) }}</small>
                                                 </div>
                                             </div>
-                                            <div v-html="v.content" class="card-text">
+                                            <b v-html="v.content" class="card-text">
 
-                                            </div>
+                                            </b>
                                             <!-- post img -->
                                             <img class="img-fluid rounded mb-75"
                                                 style="width: 100%; height: 350px; object-fit:cover;"
-                                                v-bind:src="v.hinh_anh" alt="avatar img" />
+                                                v-bind:src="v.picture" alt="avatar img" />
 
                                             <!--/ post img -->
 
@@ -412,8 +412,9 @@
                                                 <li class="newfriend-list-item">
                                                     <div class="row ">
                                                         <div class="col-md-3" style="margin: auto;">
-                                                            <img v-bind:src="v.avatar" alt=""
-                                                                class="newfriend-avatar">
+                                                            <a v-bind:href="'/profile/'+v.username"><img
+                                                                    v-bind:src="v.avatar" alt=""
+                                                                    class="newfriend-avatar"></a>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <div class="row d-flex"

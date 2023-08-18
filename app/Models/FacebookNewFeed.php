@@ -12,7 +12,7 @@ class FacebookNewFeed extends Model
     protected $fillable = [
         "id_user",
         "content",
-        "hinh_anh",
+        "id_picture",
         "count_react",
         "count_comment",
         "like_status"

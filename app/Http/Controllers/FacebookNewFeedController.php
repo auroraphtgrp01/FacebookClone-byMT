@@ -15,7 +15,8 @@ class FacebookNewFeedController extends Controller
     {
         $login = Session::get('auth');
         $data = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
-            ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar')
+            ->join('picture_of_users', 'picture_of_users.id', 'facebook_new_feeds.id_picture')
+            ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar', 'user_facebooks.username', 'picture_of_users.picture')
             ->get();
         return response()->json([
             'data' => $data,

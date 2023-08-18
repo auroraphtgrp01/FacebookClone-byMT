@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('picture_of_users', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
+            $table->text('picture');
             $table->timestamps();
         });
     }

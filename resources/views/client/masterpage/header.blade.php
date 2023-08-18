@@ -2,16 +2,21 @@
     data-nav="brand-center">
     <div class="navbar-container d-flex content text-center" style="">
         <div class="col-md-3 searchBox d-flex">
-            <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
+            <a href="/new-feed">
+                <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
+
+            </a>
             <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
                 <input type="text" class="form-control phone-number-mask" placeholder="Tìm Kiếm Trên Facebook">
             </div>
         </div>
         <div class="col-md-6 route-social d-flex ">
-            <button class="route-button btn">
-                <i class="route-social--icon text-primary fa-solid fa-house"></i>
-            </button>
+            <a href="/new-feed">
+                <button class="route-button btn">
+                    <i class="route-social--icon text-primary fa-solid fa-house"></i>
+                </button>
+            </a>
             <button class="route-button btn ">
                 <i class="route-social--icon fa-solid fa-film"></i>
             </button>

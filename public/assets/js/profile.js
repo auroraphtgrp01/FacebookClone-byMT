@@ -5,6 +5,9 @@ $(document).ready(function () {
             userInfo: {},
             listFriend: {},
             statusAdd: 0,
+            pictureOfUser: {},
+            detailPicture: {},
+            listNewFeed: {},
         },
         created() {
             this.loadData();
@@ -26,13 +29,28 @@ $(document).ready(function () {
                         this.userInfo = res.data.user;
                         this.listFriend = res.data.friend;
                         this.statusAdd = res.data.status_friend;
-                        console.log(this.statusAdd);
+                        this.pictureOfUser = res.data.picture;
+                        this.listNewFeed = res.data.newfeed;
+                        console.log(this.listNewFeed);
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function (k, v) {
                             toastr.error(v[0], 'Error');
                         });
                     });
+            },
+            changeReact(payload) {
+                axios
+                    .post('/api/newfeed/change-react', payload)
+                    .then((res) => {
+                        this.loadData();
+                    });
+            },
+            formatDate(dateTimeString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateTime = new Date(dateTimeString);
+                const formattedDate = dateTime.toLocaleDateString('vi-VN', options);
+                return formattedDate;
             },
             addFriend() {
                 axios
@@ -94,7 +112,9 @@ $(document).ready(function () {
                             toastr.error(v[0], 'Error');
                         });
                     });
-            }
+            },
+
+
         },
     });
 });
