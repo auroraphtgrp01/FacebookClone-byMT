@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\APIAuthenticationController;
 use App\Http\Controllers\APIFriendRequestController;
+use App\Http\Controllers\APIProfileControlelr;
 use App\Http\Controllers\FacebookNewFeedController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,7 @@ Route::group(['prefix' => '/newfeed'], function () {
 Route::group(['prefix' => '/authentication'], function () {
     Route::post('/login', [APIAuthenticationController::class, 'login']);
     Route::post('/register', [APIAuthenticationController::class, 'register']);
+});
+Route::group(['prefix' => '/profile'], function () {
+    Route::post('/get-profile', [APIProfileControlelr::class, 'getProfile']);
 });

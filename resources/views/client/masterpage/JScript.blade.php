@@ -15,6 +15,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- END: Page Vendor JS-->
 
+<script src="/vuexy_assets/app-assets/js/scripts/pages/page-profile.js"></script>
+<script src="/vuexy_assets/app-assets/js/scripts/cards/card-advance.js"></script>
+
 <!-- BEGIN: Theme JS-->
 <script src="/vuexy_assets/app-assets/js/core/app-menu.js"></script>
 <script src="/vuexy_assets/app-assets/js/core/app.js"></script>

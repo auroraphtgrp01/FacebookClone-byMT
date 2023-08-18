@@ -15,13 +15,16 @@
                         <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar left-panel"
                             id="leftPanel" style="border-radius: 10px;">
                             <!-- about -->
+
                             <div class="card">
                                 <div class="card-body" style="padding-left: 0;padding-bottom: 0;">
                                     <ul class="left-panel__list">
-                                        <li class="btn left-panel__list-item">
+                                        <a v-bind:href="'/profile/'+ userInfo.username" class="btn left-panel__list-item">
                                             <img v-bind:src="userInfo.avatar" alt="" class="right-nav--avatar">
-                                            <h6 class="mb-0 left-panel__list-item--label"><b>@{{ userInfo.lastname }}</b></h6>
-                                        </li>
+                                            <h6 class="mb-0 left-panel__list-item--label"><b>@{{ userInfo.lastname }}</b>
+                                            </h6>
+
+                                        </a>
                                         <li class="btn left-panel__list-item">
                                             <i data-visualcompletion="css-img" class=""
                                                 style="background-image:url('https://static.xx.fbcdn.net/rsrc.php/v3/y6/r/MXx87JcFKzH.png');background-position:0 -304px;background-size:38px 570px;width:36px;height:36px;background-repeat:no-repeat;display:inline-block"></i>
@@ -109,9 +112,12 @@
                         <!--/ left profile info section -->
 
                         <!-- center profile info section -->
-                        <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel" id="centerPanel">
+                        <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel"
+                            style="padding-left: 50px;padding-right:50px;" id="centerPanel">
+
                             <div class="col">
-                                <div class="cards">
+
+                                {{-- <div class="cards">
                                     <div class="mb-2" style="width: 100%;">
                                         <div id="carouselExampleRide" class="carousel slide" style=""
                                             data-bs-ride="true">
@@ -236,7 +242,7 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             {{-- Create NewFeed  --}}
                             <div class="card" style="height:150px;">
@@ -246,8 +252,8 @@
                                             <img v-bind:src="userInfo.avatar" alt="" class="right-nav--avatar">
                                         </div>
                                         <div class="col-md">
-                                            <button class="btn status-newfeed_create--btn text-start"
-                                                data-bs-toggle="modal" data-bs-target="#newStatus">@{{ userInfo.lastname }}
+                                            <button class="btn status-newfeed_create--btn text-start" data-bs-toggle="modal"
+                                                data-bs-target="#newStatus">@{{ userInfo.lastname }}
                                                 ơi, bạn đang
                                                 nghĩ
                                                 gì
@@ -261,14 +267,14 @@
                                                 <img height="24" width="24" alt=""
                                                     referrerpolicy="origin-when-cross-origin"
                                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yF/r/v1iF2605Cb5.png">
-                                                <b class="ms-1" style="margin-top: 4px;">Video
+                                                <b class="ms-1" style="font-size: 0.8rem;margin-top: 4px;">Video
                                                     Trực Tiếp</b>
                                             </li>
                                             <li class="btn button_list-item d-flex">
                                                 <img height="24" width="24" alt=""
                                                     referrerpolicy="origin-when-cross-origin"
                                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png">
-                                                <b class="ms-1" style="margin-top: 4px;">Ảnh
+                                                <b class="ms-1" style="font-size: 0.8rem;margin-top: 4px;">Ảnh
                                                     /
                                                     Video</b>
                                             </li>
@@ -276,7 +282,7 @@
                                                 <img height="24" width="24" alt=""
                                                     referrerpolicy="origin-when-cross-origin"
                                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/yMDS19UDsWe.png">
-                                                <b class="ms-1" style="margin-top: 4px;">Cảm
+                                                <b class="ms-1" style="font-size: 0.8rem;margin-top: 4px;">Cảm
                                                     xúc
                                                     / Hoạt động</b>
                                             </li>
@@ -308,8 +314,8 @@
                                         </div>
                                         <!-- post img -->
                                         <img class="img-fluid rounded mb-75"
-                                            style="width: 100%; height: 350px; background-size: cover"
-                                            v-bind:src="v.hinh_anh" alt="avatar img" />
+                                            style="width: 100%; height: 350px; object-fit:cover;" v-bind:src="v.hinh_anh"
+                                            alt="avatar img" />
 
                                         <!--/ post img -->
 
@@ -450,7 +456,8 @@
                                     </div>
                                     <div class="dropdown-divider "></div>
                                     <template v-for="(v,k) in listUser">
-                                        <div class="d-flex justify-content-start align-items-center person-contact">
+                                        <div v-on:click="openChat(v);"
+                                            class="d-flex justify-content-start align-items-center person-contact">
                                             <span class="avatar me-1">
                                                 <img class="round" v-bind:src="v.avatar" height="40" width="40">
                                                 <span class="avatar-status-online"></span></span>
@@ -458,7 +465,6 @@
                                                 <h6 class="mb-0 text-hover">@{{ v.lastname }}</h6>
                                                 <small class="text">Đang hoạt động</small>
                                             </div>
-
                                         </div>
                                     </template>
 
@@ -473,6 +479,98 @@
                             <!--/ polls card -->
                         </div>
                         <!--/ right profile info section -->
+                    </div>
+                    {{-- CHAT --}}
+                    <div id="chatBox" class="col-lg-4 col-md-6 col-12 fadeIn" style="display: none;">
+                        <div class="card chat-widget chat-custom">
+                            <div class="card-header" style="justify-content: space-between;">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar me-1" style="justify-content: flex-start">
+                                        <img v-bind:src="userChat.avatar" alt="Avatar" width="34"
+                                            height="34" />
+                                        <span class="avatar-status-online"></span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-0"><b>@{{ userChat.lastname }}</b></h6>
+                                        <h6 class="mb-0" style="font-size: 0.8rem;">Đang hoạt động</h6>
+                                    </div>
+                                </div>
+
+                                <button id="hideChat" class="btn button-border"><i
+                                        class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <!-- User Chat messages -->
+                            <section class="chat-app-window">
+                                <div class="user-chats" style="height: 300px;">
+                                    <div class="chats">
+                                        <div class="chat">
+                                            <div class="chat-avatar">
+                                                <span class="avatar box-shadow-1 cursor-pointer">
+                                                    <img v-bind:src="userInfo.avatar" alt="avatar" height="36"
+                                                        width="36" />
+                                                </span>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-content" style="border-radius: 20px;">
+                                                    <p>Xin chàooo, hôm nay bạn thế nào nhỉ ?</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chat chat-left">
+                                            <div class="chat-avatar">
+                                                <span class="avatar box-shadow-1 cursor-pointer">
+                                                    <img v-bind:src="userChat.avatar" alt="avatar" height="36"
+                                                        width="36" />
+                                                </span>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-content" style="border-radius: 20px;">
+                                                    <p>Chào Tuấn !</p>
+                                                    <p>Hôm nay tui ổn. Còn ông thì sao ? </p>
+                                                </div>
+                                                <div class="chat-content" style="border-radius: 20px;">
+                                                    <p>À mà hôm nay là thứ mấy nhỉ ?.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chat">
+                                            <div class="chat-avatar">
+                                                <span class="avatar box-shadow-1 cursor-pointer">
+                                                    <img v-bind:src="userInfo.avatar" alt="avatar" height="36"
+                                                        width="36" />
+                                                </span>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-content" style="border-radius: 20px;">
+                                                    <p>Hôm nay là thứ 5 á</p>
+                                                </div>
+                                                <div class="chat-content" style="border-radius: 20px;">
+                                                    <p>Tui vẫn ổn hihi </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Submit Chat form -->
+                                <div class="chat-app-form">
+                                    <div class="input-group input-group-merge me-50 w-75 form-send-message">
+                                        <input type="text" style="border: 1px solid #ccc" class="form-control"
+                                            placeholder="Nhập tin nhắn của bạn..." />
+                                    </div>
+                                    <button type="button" class="btn button-send send ms-2">
+                                        <svg fill="#1b74e4" class="text-white" style="" height="20px"
+                                            viewBox="0 0 24 24" width="20px">
+                                            <path
+                                                d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 C22.8132856,11.0605983 22.3423792,10.4322088 21.714504,10.118014 L4.13399899,1.16346272 C3.34915502,0.9 2.40734225,1.00636533 1.77946707,1.4776575 C0.994623095,2.10604706 0.8376543,3.0486314 1.15159189,3.99121575 L3.03521743,10.4322088 C3.03521743,10.5893061 3.34915502,10.7464035 3.50612381,10.7464035 L16.6915026,11.5318905 C16.6915026,11.5318905 17.1624089,11.5318905 17.1624089,12.0031827 C17.1624089,12.4744748 16.6915026,12.4744748 16.6915026,12.4744748 Z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!--/ Submit Chat form -->
+                            </section>
+                            <!-- User Chat messages -->
+                        </div>
                     </div>
                     <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

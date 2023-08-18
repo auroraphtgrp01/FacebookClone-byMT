@@ -8,7 +8,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        return view('client.page.index');
+        return view('client.page.profile');
     }
     public function index1()
     {

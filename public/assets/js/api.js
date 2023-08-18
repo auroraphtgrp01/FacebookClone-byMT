@@ -11,21 +11,30 @@ $(document).ready(function () {
             listRequest: {},
             selectedFileName: '',
             userInfo: {},
+            userChat: {},
+            profileInfo: {},
+            friendInfo: {},
         },
         created() {
             this.loadNewFeed();
-
         },
         methods: {
             loadImg(arr) {
                 return arr.length;
+            },
+            testClick() {
+                toastr.success('Dang Click');
+            },
+            openChat(value) {
+                $("#chatBox").show();
+                this.userChat = value;
+                console.log(this.userChat);
             },
             createImageObject(arrayObject) {
                 this.imgNewFeed = {};
 
                 let obj = {}, arr = [];
                 for (let i = 0; i < arrayObject.length; i++) {
-
                     const splitLinks = arrayObject[i].hinh_anh.split(';');
                     if (splitLinks[0])
                         obj = {
@@ -36,6 +45,7 @@ $(document).ready(function () {
                     f
                 } return arr;
             },
+
             loadNewFeed() {
                 axios
                     .post('/api/newfeed/data')
@@ -141,7 +151,36 @@ $(document).ready(function () {
                             toastr.error(v[0], 'Error');
                         });
                     });
+            },
+            loadProfile(id) {
+                axios
+                    .post('/api/profile/get-profile', id)
+                    .then((res) => {
+                        if (res.data.status) {
+                            this.profileInfo = res.data.user;
+                            this.friendInfo = res.data.friend;
+                            window.location.href = res.data.redirect;
+                            console.log(this.profileInfo);
+                        } else {
+                            toastr.error(res.data.message, 'Error !')
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
             }
         },
     });
+    // Show / Hide Box Chat
+    $("#showChat").click(function () {
+        $("#chatBox").show();
+    });
+
+    $("#hideChat").click(function () {
+        $("#chatBox").hide();
+    });
 });
+
+

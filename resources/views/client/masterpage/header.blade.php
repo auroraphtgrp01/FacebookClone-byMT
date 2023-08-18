@@ -4,7 +4,7 @@
         <div class="col-md-3 searchBox d-flex">
             <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
             <div class="input-group input-group-merge">
-                <span class="input-group-text"><i data-feather='search'></i></span>
+                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
                 <input type="text" class="form-control phone-number-mask" placeholder="Tìm Kiếm Trên Facebook">
             </div>
         </div>
@@ -34,7 +34,7 @@
                         <i class="fa-brands fa-facebook-messenger ficon"></i>
                         </i></button>
                     {{-- Dropdown --}}
-                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end" style="width: 350px;">
                         <li class="dropdown-menu-header">
                             <div class="dropdown-header d-flex">
                                 <h3 class="notification-title mb-0 me-auto" style="margin-top: 3px;"><b>Chat</b></h3>
@@ -143,9 +143,9 @@
                 <li class="nav-item dropdown dropdown-notification me-25">
                     <button class="btn btn-notify" style="padding: 0;background-color:#a7aac480"
                         data-bs-toggle="dropdown">
-                        <i class="ficon" data-feather="bell">
+                        <i class="fa-solid fa-bell" style="font-size: 1.4rem;"></i>
                         </i></button>
-                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end" style="width: 350px;">
                         <li class="dropdown-menu-header">
                             <div class="dropdown-header d-flex">
                                 <h4 class="notification-title mb-0 me-auto">Thông Báo</h4>

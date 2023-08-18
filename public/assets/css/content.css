@@ -1,6 +1,6 @@
 .scrollable-panel {
     overflow-y: auto;
-    max-height: 800px; /* Điều chỉnh độ cao tùy ý */
+    max-height: 1000px;
 }
 .hide-scrollbar::-webkit-scrollbar {
     width: 0.5em;
@@ -23,7 +23,7 @@
     height: 100vh;
 }
 .button_list-item {
-    margin-left: 5px;
+    margin-left: 2px;
     cursor: pointer;
 }
 .button_list-item:hover {
@@ -235,4 +235,19 @@ margin-left: 55px; */
 }
 .button_border--outline:hover {
     background-color: #ccccccaa;
+}
+.chat-custom {
+    width: 320px;
+    position: fixed;
+    bottom: 0;
+    right: 100px;
+    z-index: 1;
+    /* display: none; */
+    transform: translateY(22px);
+}
+.button-send {
+    width: 40px;
+    height: 40px;
+    background-color: #cccccc4b;
+    padding: 0;
 }

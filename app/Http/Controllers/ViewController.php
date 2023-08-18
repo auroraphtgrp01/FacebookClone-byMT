@@ -20,4 +20,8 @@ class ViewController extends Controller
     {
         return view('client.page.authentication');
     }
+    public function profile()
+    {
+        return view('client.page.profile');
+    }
 }
