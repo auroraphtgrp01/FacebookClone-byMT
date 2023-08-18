@@ -14,7 +14,7 @@
                         <div class="row">
                             <!-- left profile info section -->
                             <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar left-panel"
-                                id="leftPanel" style="border-radius: 10px;">
+                                id="leftPanel" style="">
                                 <!-- about -->
 
                                 <div class="card">
@@ -112,10 +112,10 @@
                                 <!--/ twitter feed card -->
                             </div>
                             <!--/ left profile info section -->
-
+                            <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar ">
+                            </div>
                             <!-- center profile info section -->
-                            <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel"
-                                style="padding-left: 50px;padding-right:50px;" id="centerPanel">
+                            <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel" style="" id="centerPanel">
 
                                 <div class="col">
 
@@ -402,7 +402,7 @@
 
                             <!-- right profile info section -->
                             <div class="col-lg-3 col-12 order-3 scrollable-panel hide-scrollbar right-panel"
-                                id="rightPanel">
+                                style="" id="rightPanel">
                                 <!-- latest profile pictures -->
                                 <div class="card">
                                     <div class="card-body" style="padding: 0;">
@@ -491,8 +491,11 @@
                             </div>
                             <!--/ right profile info section -->
                         </div>
+
+
+
                         {{-- CHAT --}}
-                        <div id="chatBox" class="col-lg-4 col-md-6 col-12 fadeIn" style="display: none;">
+                        <div id="chatBox" class="col-lg-4 col-md-6 col-12 chatbox-animation" style="display: none;">
                             <div class="card chat-widget chat-custom">
                                 <div class="card-header" style="justify-content: space-between;">
                                     <div class="d-flex align-items-center">

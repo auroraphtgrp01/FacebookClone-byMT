@@ -12,15 +12,22 @@
 .left-panel {
     flex: 1;
     height: 100vh;
+    border-radius: 10px;
+    position: fixed;
+    left: 0;
+    overflow-y: scroll;
 }
 .centerPanel {
     flex: 2;
-    height: 100vh;
     overflow-y: scroll;
+    padding-left: 48px;
+    padding-right: 50px;
 }
 .right-panel {
     flex: 1;
     height: 100vh;
+    position: fixed;
+    right: 0;
 }
 .button_list-item {
     margin-left: 2px;
@@ -250,4 +257,6 @@ margin-left: 55px; */
     height: 40px;
     background-color: #cccccc4b;
     padding: 0;
+}
+.chatbox-animation {
 }
