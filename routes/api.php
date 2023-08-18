@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\APIAuthenticationController;
 use App\Http\Controllers\APIFriendRequestController;
+use App\Http\Controllers\APIHeaderController;
 use App\Http\Controllers\APIProfileControlelr;
 use App\Http\Controllers\FacebookNewFeedController;
 use Illuminate\Http\Request;
@@ -24,4 +25,11 @@ Route::group(['prefix' => '/authentication'], function () {
 });
 Route::group(['prefix' => '/profile'], function () {
     Route::post('/get-profile', [APIProfileControlelr::class, 'getProfile']);
+    Route::post('/add-friend', [APIProfileControlelr::class, 'addFriend']);
+    Route::post('/cancel-request', [APIProfileControlelr::class, 'cancelRequest']);
+    Route::post('/remove-friend', [APIProfileControlelr::class, 'removeFriend']);
+    Route::post('/accept-friend', [APIProfileControlelr::class, 'acceptFriend']);
+});
+Route::group(['prefix' => '/header'], function () {
+    Route::post('/header-data', [APIHeaderController::class, 'header_data']);
 });

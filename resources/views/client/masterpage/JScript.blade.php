@@ -27,6 +27,8 @@
 <!-- END: Page JS-->
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/api.js"></script>
+<script src="/assets/js/header.js"></script>
+
 <script>
     $(window).on('load', function() {
         if (feather) {

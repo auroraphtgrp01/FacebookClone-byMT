@@ -12,17 +12,15 @@
 
 <body class="horizontal-layout horizontal-menu navbar-floating footer-static" data-open="hover" data-menu="horizontal-menu"
     data-col="">
-    <div id="appNewFeed">
+    <div id="appHeader">
         @include('client.masterpage.header')
-        <!-- END: Header-->
-
-        <!-- BEGIN: Main Menu-->
-        {{-- @include('client.masterpage.main_menu') --}}
-        <!-- END: Main Menu-->
-
-        <!-- BEGIN: Content-->
-        @include('client.masterpage.Content')
     </div>
+    <!-- END: Header-->
+    <!-- BEGIN: Main Menu-->
+    {{-- @include('client.masterpage.main_menu') --}}
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    @include('client.masterpage.Content')
     <!-- BEGIN: Header-->
 
     <!-- END: Content-->

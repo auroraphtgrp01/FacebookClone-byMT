@@ -24,7 +24,7 @@ class FacebookNewFeedController extends Controller
     }
     public function dataUser()
     {
-        $userLoginID = 1;
+        $userLoginID =  Session::get('auth')->id;
         $data = UserFacebook::join('relationships', function ($join) use ($userLoginID) {
             $join->on('user_facebooks.id', '=', 'relationships.user_x')
                 ->where('relationships.user_y', '=', $userLoginID)

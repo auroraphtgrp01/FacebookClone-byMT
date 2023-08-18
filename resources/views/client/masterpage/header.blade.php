@@ -195,7 +195,7 @@
                                 width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" v-bind:href="'/profile/' + userInfo.username">
                             <i class="me-50" data-feather="user"></i>
                             Trang Cá Nhân</a>
 

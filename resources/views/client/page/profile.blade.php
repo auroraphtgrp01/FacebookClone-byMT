@@ -19,41 +19,45 @@
                             </div>
                             <!-- Avatar -->
                             <div class="profile-title ms-1 mt-2">
-                                <h2 class="text mt-3">Auroraphtgrp</h2>
+                                <h2 class="text mt-3">@{{ userInfo.firstname }} @{{ userInfo.lastname }}</h2>
                                 <h5 class="text">1.1k bạn bè</h5>
                                 <div class="avatar-group" style="margin-bottom: 2.5rem;">
-                                    <div class="avatar">
-                                        <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-5.jpg"
-                                            alt="Avatar" height="32" width="32">
-                                    </div>
-                                    <div class="avatar">
-                                        <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-7.jpg"
-                                            alt="Avatar" height="32" width="32">
-                                    </div>
-                                    <div class="avatar">
-                                        <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-10.jpg"
-                                            alt="Avatar" height="32" width="32">
-                                    </div>
-                                    <div class="avatar">
-                                        <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-8.jpg"
-                                            alt="Avatar" height="32" width="32">
-                                    </div>
-                                    <div class="avatar">
-                                        <img src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-20.jpg"
-                                            alt="Avatar" height="32" width="32">
-                                    </div>
+                                    <template v-for="(v,k) in listFriend">
+                                        <a v-bind:href="'/profile/' + v.username" class="avatar" v-if="k < 5">
+                                            <img v-bind:src="v.avatar" alt="Avatar" height="32" width="32">
+                                        </a>
+                                    </template>
                                 </div>
                             </div>
 
                         </div>
-                        <button v-on:click="testClicks()" class="btn btn-primary">sdsd</button>
                         <div class="d-flex button-group--addfr me-3" style="margin-top:5rem;">
-                            <button class="btn me-2"
+                            <template v-if="statusAdd == 3">
+                                <button class="btn me-2" v-on:click="addFriend()"
+                                    style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
+                                    <i class="fa-solid fa-user-plus me-1"></i><b>Thêm bạn
+                                        bè</b></button>
+                            </template>
+                            <button v-if="statusAdd == 2" class="btn me-2" v-on:click="cancelFriendRequest()"
                                 style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;"> <i
-                                    class="fa-solid fa-user-plus me-1"></i><b>Thêm bạn
-                                    bè</b></button>
+                                    class="fa-solid fa-user-plus me-1"></i><b>Huỷ lời mời</b></button>
+                            <button v-if="statusAdd == 4" class="btn me-2" v-on:click="acceptFriend()"
+                                style="height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
+                                <i class="fa-solid fa-user-check ms-1"></i><b class="ms-1 me-2">Chấp nhận kết bạn
+                                </b></button>
+                            <div class="btn-group" v-if="statusAdd == 1">
+                                <button id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                                    class="btn me-2 dropdown-toggle waves-effect waves-float waves-light" v-on:click=""
+                                    style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
+                                    <i class="fa-solid fa-user-group me-1"></i><b>Bạn bè</b></button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#removeFriend">Huỷ Kết
+                                        Bạn</a>
+                                </div>
+                            </div>
                             <button class="btn" style="width: 120px; height: 40px;background-color: #ccc; padding: 0; ">
                                 <i class="fa-brands fa-facebook-messenger me-1"></i>Nhắn tin</button>
+
                         </div>
                     </div>
 
@@ -80,7 +84,8 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="home" aria-labelledby="home-tab" role="tabpanel">
+                                    <div class="tab-pane active" id="home" aria-labelledby="home-tab"
+                                        role="tabpanel">
 
                                     </div>
                                     <div class="tab-pane" id="profile" aria-labelledby="profile-tab" role="tabpanel">
@@ -165,13 +170,17 @@
                                     bè</b></button>
                         </div>
                         <div class="row mt-1">
-                            <div class="col-md-4 col-6 mb-2" style="padding:5px;">
-                                <a href="#">
-                                    <img src="/vuexy_assets/app-assets/images/profile/user-uploads/user-13.jpg"
-                                        class="img-fluid rounded" style="margin-top: 0;" alt="avatar img" />
-                                </a>
-                                <h6 class="" style="margin-top: 5px; margin-left: 2px;"><b>Minh Tuấn</b></h6>
-                            </div>
+                            <template v-for="(v,k) in listFriend">
+                                <div class="col-md-4 col-6 mb-2" style="padding:5px;" v-if="k<9">
+                                    <a v-bind:href="'/profile/' + v.username">
+                                        <img v-bind:src="v.avatar" class="img-fluid rounded" style="margin-top: 0;" />
+                                    </a>
+                                    <h6 class="" style="margin-top: 5px; margin-left: 2px;">
+                                        <b>@{{ v.lastname }}</b>
+                                    </h6>
+                                </div>
+                            </template>
+
 
                         </div>
                     </div>
@@ -353,8 +362,8 @@
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png" alt=""
                                     style="height: 24px; width: 24px;"> Thêm Ảnh</button>
-                            <input v-on:change="handleFileChange" type="file" name="" ref="fileInput"
-                                class="form-control d-none" id="">
+                            <input type="file" name="" ref="fileInput" class="form-control d-none"
+                                id="">
                             <button class="btn mt-2 btn-outline-primary"
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/MqTJr_DM3Jg.png" alt=""
@@ -374,7 +383,24 @@
                 </div>
             </div>
         </div>
-
+        <div class="modal fade text-start modal-warning" id="removeFriend" tabindex="-1"
+            aria-labelledby="myModalLabel140" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel140">CẢNH BÁO !</h5>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn huỷ kết bạn ?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Huỷ Bỏ </button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                            v-on:click="removeFriend()">Đồng Ý</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade text-start" id="showImg" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
