@@ -197,11 +197,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-1">
-                                <img v-bind:src="userInfo.avatar" alt="" class="right-nav--avatar">
+                                <img v-bind:src="userLogin.avatar" alt="" class="right-nav--avatar">
                             </div>
                             <div class="col-md ms-1">
                                 <button class="btn status-newfeed_create--btn text-start" data-bs-toggle="modal"
-                                    data-bs-target="#newStatus">@{{ userInfo.lastname }}
+                                    data-bs-target="#newStatus">@{{ userLogin.lastname }}
                                     ơi, bạn đang
                                     nghĩ
                                     gì
@@ -394,9 +394,9 @@
                     <div class="dropdown-divider mt-1"></div>
                     <div class="modal-body">
                         <div class="d-flex mb-2">
-                            <img v-bind:src="userInfo.avatar" alt="" class="newfriend-avatar">
+                            <img v-bind:src="userLogin.avatar" alt="" class="newfriend-avatar">
                             <div class="modal-item--list ms-1">
-                                <h5><b>@{{ userInfo.lastname }}</b></h5>
+                                <h5><b>@{{ userLogin.lastname }}</b></h5>
                                 <div class="dropdown" style="margin-top: -5px; ">
                                     <button class="btn btn-sm" style="background-color: #ccc; padding: 5px 5px 5px 5px;"
                                         data-bs-toggle="dropdown">

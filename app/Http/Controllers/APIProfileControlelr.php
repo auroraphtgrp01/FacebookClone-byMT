@@ -31,6 +31,7 @@ class APIProfileControlelr extends Controller
                 ->where('facebook_new_feeds.id_user', $userID)->orderBy('created_at', 'desc')->get();
             $picture = PictureOfUser::where('id_user', $userID)->get();
             $userLoginID = Session::get('auth')->id;
+            $userLogin = Session::get('auth');
             $data = UserFacebook::join('relationships', function ($join) use ($userID) {
                 $join->on('user_facebooks.id', '=', 'relationships.user_x')
                     ->where('relationships.user_y', '=', $userID)
@@ -55,7 +56,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 0,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
-                    'userLogin' => $userLoginID,
+                    'userLogin' => $userLogin,
                 ]);
             }
             if ($check_relationship) {
@@ -65,7 +66,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 1,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
-                    'userLogin' => $userLoginID,
+                    'userLogin' => $userLogin,
 
                 ]);
             } else if ($check_request == null && $check_add == null) {
@@ -75,7 +76,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 3,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
-                    'userLogin' => $userLoginID,
+                    'userLogin' => $userLogin,
 
                 ]);
             }
@@ -86,7 +87,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 4,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
-                    'userLogin' => $userLoginID,
+                    'userLogin' => $userLogin,
 
                 ]);
             }
@@ -97,7 +98,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 2,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
-                    'userLogin' => $userLoginID,
+                    'userLogin' => $userLogin,
 
                 ]);
             }

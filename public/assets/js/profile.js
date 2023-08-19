@@ -23,7 +23,7 @@ $(document).ready(function () {
             // STATUS ACTION
             uploadStatus() {
                 this.newStatus.picture = this.filePath;
-                this.newStatus.id_user = this.userInfo.id;
+                this.newStatus.id_user = this.userLogin.id;
                 axios
                     .post('/api/newfeed/upload-status', this.newStatus)
                     .then((res) => {
