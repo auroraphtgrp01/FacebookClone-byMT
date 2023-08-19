@@ -17,11 +17,11 @@ return new class extends Migration
             // $table->string('username');
             $table->string('id_user');
             // $table->dateTime('time_create');
-            $table->text('content');
-            $table->integer('id_picture');
-            $table->string('count_react');
-            $table->string('count_comment');
-            $table->integer('like_status')->comment('0-> like ; 1-> unlike');
+            $table->text('content')->default('');
+            $table->integer('id_picture')->default(0);
+            $table->string('count_react')->default(0);
+            $table->string('count_comment')->default(0);
+            $table->integer('like_status')->comment('0-> like ; 1-> unlike')->default(1);
             $table->timestamps();
         });
     }

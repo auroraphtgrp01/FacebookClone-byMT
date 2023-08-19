@@ -58,8 +58,8 @@
 
     <!-- BEGIN: Content-->
 
-    <div class="col-lg-4 col-md-6 col-12">
-        <div class="card chat-widget xyz-out" xyz="fade up big">
+    <div class="col-lg-4 col-md-6 col-12" id="">
+        {{-- <div class="card chat-widget xyz-out" xyz="fade up big">
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <div class="avatar me-2">
@@ -204,7 +204,9 @@
                 <!--/ Submit Chat form -->
             </section>
             <!-- User Chat messages -->
-        </div>
+        </div> --}}
+        <input type="file" name="" id="" class="form-control mt-5 ms-5">
+        <button class="btn btn-primary  mt-5 ms-5">Upload File</button>
     </div>
 
 

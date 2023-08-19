@@ -29,8 +29,7 @@ class APIProfileControlelr extends Controller
             $dataNewFeed = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
                 ->join('picture_of_users', 'picture_of_users.id', 'facebook_new_feeds.id_picture')
                 ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar', 'user_facebooks.username', 'picture_of_users.picture')
-                ->where('facebook_new_feeds.id_user', $userID)
-                ->get();
+                ->where('facebook_new_feeds.id_user', $userID)->orderBy('created_at', 'desc')->get();
             $picture = PictureOfUser::where('id_user', $userID)->get();
             $userLoginID = Session::get('auth')->id;
             $data = UserFacebook::join('relationships', function ($join) use ($userID) {

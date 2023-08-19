@@ -8,6 +8,7 @@ $(document).ready(function () {
             pictureOfUser: {},
             detailPicture: {},
             listNewFeed: {},
+            deleteStatus: {},
         },
         created() {
             this.loadData();
@@ -15,6 +16,23 @@ $(document).ready(function () {
         methods: {
             testClicks() {
                 toastr.success('Dang click');
+            }, deleteNewFeed(payload) {
+                console.log(payload);
+                axios
+                    .post('/api/newfeed/delete-status', payload)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            this.loadData();
+                        } else {
+                            toastr.error(res.data.message, 'Thất Bại !');
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
             },
             loadData() {
                 var currentURL = window.location.href;

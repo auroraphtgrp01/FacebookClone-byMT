@@ -1,16 +1,18 @@
 @extends('client.masterpage.masterpage_index')
 @section('content')
-    <div id="appNewFeed">
+    <div id="appNewFeed1">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"
             style="background: linear-gradient(180deg, rgb(255 255 255 / 0%) 44%, rgb(22 29 49 / 0%) 73%, rgba(22, 29, 49, 0));">
         </div>
         <div class="content-wrapper container-xxl p-0">
 
-            <div class="content-body" id="app">
+            <div class="content-body">
                 <div>
                     <!-- profile info section -->
+
                     <section>
+
                         <div class="row">
                             <!-- left profile info section -->
                             <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar left-panel"
@@ -299,26 +301,44 @@
                                 <template v-for="(v, k) in listNewFeed">
                                     <div class="card">
                                         <div class="card-body" style="padding-bottom: 0;">
-                                            <div class="d-flex justify-content-start align-items-center mb-1">
+                                            <div class="d-flex align-items-center mb-1"
+                                                style="justify-content: space-between">
                                                 <!-- avatar -->
-                                                <a v-bind:href="'/profile/' + v.username" class="avatar me-1">
-                                                    <img v-bind:src="v.avatar" alt="avatar img" height="40"
-                                                        width="40" />
-                                                </a>
-                                                <!--/ avatar -->
-                                                <div class="profile-user-info">
-                                                    <h6 class="mb-0"><b>@{{ v.lastname }} @{{ v.firstname }}</b>
-                                                    </h6>
-                                                    <small class="text">@{{ formatDate(v.created_at) }}</small>
+                                                <div class="d-flex">
+                                                    <a v-bind:href="'/profile/' + v.username" class="avatar me-1">
+                                                        <img v-bind:src="v.avatar" alt="avatar img" height="40"
+                                                            width="40" />
+                                                    </a>
+                                                    <!--/ avatar -->
+                                                    <div class="profile-user-info">
+                                                        <h6 class="mb-0"><b>@{{ v.lastname }}
+                                                                @{{ v.firstname }}</b>
+                                                        </h6>
+                                                        <small class="text">@{{ formatDate(v.created_at) }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <template v-if="userInfo.id == v.id_user">
+                                                        <button class="btn" data-bs-toggle="modal"
+                                                            data-bs-target="#deleteModal"><i class="fa-solid fa-xmark"
+                                                                style="font-size: 1.2rem;"
+                                                                v-on:click="deleteStatus = v"></i></button>
+                                                    </template>
+
                                                 </div>
                                             </div>
                                             <b v-html="v.content" class="card-text">
 
                                             </b>
                                             <!-- post img -->
-                                            <img class="img-fluid rounded mb-75"
-                                                style="width: 100%; height: 350px; object-fit:cover;"
-                                                v-bind:src="v.picture" alt="avatar img" />
+                                            <template v-if="v.picture != '' ">
+                                                <div class="cursor-pointer" data-bs-toggle="modal"
+                                                    data-bs-target="#showImg" v-on:click="detailPicture = v">
+                                                    <img class="img-fluid rounded mb-75"
+                                                        style="width: 100%; height: 350px; object-fit:cover;"
+                                                        v-bind:src="v.picture" alt="avatar img" />
+                                                </div>
+                                            </template>
 
                                             <!--/ post img -->
 
@@ -586,11 +606,27 @@
                                 <!-- User Chat messages -->
                             </div>
                         </div>
-                        <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade text-start" id="showImg" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body d-flex">
+                                        <img v-bind:src="detailPicture.picture" class="img-fluid rounded"
+                                            style="width: 400px; margin: auto;" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true"
+                            data-bs-backdrop='static'>
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="d-flex mt-1">
-                                        <h3 class="modal-title" style="margin: auto"><b>Tạo bài viết</b></h3>
+                                        <h3 class="modal-title" style="margin: auto"><b style="margin-left: 45px;">Tạo
+                                                bài viết</b></h3>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-dismiss="modal"><i
+                                                class="fa-solid fa-xmark" v-on:click="cancelStatus()"
+                                                style="font-size: 1.4rem;"></i></button>
                                     </div>
                                     <div class="dropdown-divider mt-1"></div>
                                     <div class="modal-body">
@@ -623,8 +659,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <textarea name="" class="form-control" id="" cols="30" rows="5"
+                                        {{-- <textarea name="" id="contentBox" name="content_status" cols="30" rows="10"></textarea> --}}
+                                        <textarea name="content" v-model="newStatus.content" class="form-control" cols="30" rows="5"
                                             placeholder="Bạn đang nghĩ gì thế ? " style=""></textarea>
+                                        <div v-if="filePath!=''" class="d-flex">
+                                            <img v-bind:src="filePath" class="img-fluid mt-1"
+                                                style="width: 100%; height: 300px; object-fit: cover; margin:auto; border-radius: 10px;">
+                                        </div>
                                         <div class="d-flex">
                                             <button v-on:click="showUploader()"
                                                 class="select-files btn mt-2 btn-outline-success"
@@ -632,8 +673,9 @@
                                                     class="x1b0d499 xl1xv1r"
                                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png"
                                                     alt="" style="height: 24px; width: 24px;"> Thêm Ảnh</button>
-                                            <input v-on:change="handleFileChange" type="file" name=""
-                                                ref="fileInput" class="form-control d-none" id="">
+                                            <input type="file" name="" ref="fileInput"
+                                                v-on:change="handleFileChange" class="form-control d-none" id=""
+                                                ref="file">
                                             <button class="btn mt-2 btn-outline-primary"
                                                 style="padding:8px; margin: auto; margin-right: 4px;"><img
                                                     class="x1b0d499 xl1xv1r"
@@ -655,10 +697,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade text-start" id="deleteModal" tabindex="-1"
+                            aria-labelledby="myModalLabel20" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel20">Cảnh Báo</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Bạn đang thực hiện thao tác xoá bài viết này. Bạn có chắc chắn muốn xoá ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal"
+                                            aria-label="Close">Huỷ Bỏ</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                            v-on:click="deleteNewFeed(deleteStatus)">Accept</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                     <!--/ profile info section -->
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('JS')
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 @endsection

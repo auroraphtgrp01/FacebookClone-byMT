@@ -16,8 +16,11 @@ Route::group(['prefix' => '/newfeed'], function () {
     Route::post('/change-react', [FacebookNewFeedController::class, 'changeReact']);
     Route::post('/accept-friend', [FacebookNewFeedController::class, 'acceptFriend']);
     Route::post('/refuse-friend', [FacebookNewFeedController::class, 'refuseFriend']);
-    Route::post('/upload-status', [FacebookNewFeedController::class, 'uploadStatus']);
+    Route::post('/upload-file', [FacebookNewFeedController::class, 'uploadFile']);
     Route::post('/log-out', [FacebookNewFeedController::class, 'logout']);
+    Route::post('/upload-status', [FacebookNewFeedController::class, 'uploadStatus']);
+    Route::post('/cancel-status', [FacebookNewFeedController::class, 'cancelStatus']);
+    Route::post('/delete-status', [FacebookNewFeedController::class, 'deleteStatus']);
 });
 Route::group(['prefix' => '/authentication'], function () {
     Route::post('/login', [APIAuthenticationController::class, 'login']);

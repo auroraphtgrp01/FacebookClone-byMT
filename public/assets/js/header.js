@@ -21,7 +21,23 @@ $(document).ready(function () {
                             toastr.error(v[0], 'Error');
                         });
                     });
-            }
+            }, logOut() {
+                axios
+                    .post('/api/newfeed/log-out',)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            setTimeout(() => {
+                                window.location.href = res.data.redirect;
+                            }, 1000);
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+            },
         },
     });
 });

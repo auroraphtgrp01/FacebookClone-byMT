@@ -205,8 +205,7 @@
                             Trang Cá Nhân</a>
 
                         <div class="dropdown-divider"></div>
-                        <a v-on:click="logOut()" class="dropdown-item" href="#"><i class="me-50"
-                                data-feather="power"></i>
+                        <a v-on:click="logOut()" class="dropdown-item"><i class="me-50" data-feather="power"></i>
                             Đăng Xuất</a>
                     </div>
                 </li>

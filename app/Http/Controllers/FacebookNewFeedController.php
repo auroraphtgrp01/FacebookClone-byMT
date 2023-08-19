@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\FacebookNewFeed;
 use App\Models\FriendRequest;
+use App\Models\PictureOfUser;
 use App\Models\Relationship;
 use App\Models\UserFacebook;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class FacebookNewFeedController extends Controller
 {
@@ -17,7 +22,8 @@ class FacebookNewFeedController extends Controller
         $data = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
             ->join('picture_of_users', 'picture_of_users.id', 'facebook_new_feeds.id_picture')
             ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar', 'user_facebooks.username', 'picture_of_users.picture')
-            ->get();
+            ->orderBy('created_at', 'desc')->get();
+
         return response()->json([
             'data' => $data,
             'user' => $login,
@@ -88,10 +94,81 @@ class FacebookNewFeedController extends Controller
             ]);
         }
     }
+    public function uploadFile(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = 'uploads_client';
+            $extension = $file->getClientOriginalExtension();
+            $fileName = Str::uuid() . '.' . $extension;
+            $file->move(public_path($path), $fileName); //
+            $imagePath = $path . '/' . $fileName;
+            return response()->json(['path' => $imagePath]);
+        } else {
+            return response()->json(['message' => 'No file provided'], 400);
+        }
+    }
     public function uploadStatus(Request $request)
     {
-        $file = $request->file('file');
-        dd($file);
+        DB::beginTransaction();
+        try {
+            $idUser = $request->id_user;
+            $content = '<p> ' . $request->content . ' </p>';
+            if ($request->picture != '') {
+                $picture = PictureOfUser::create([
+                    'id_user' => $idUser,
+                    'picture' => '/' . $request->picture
+                ]);
+                $newfeed = FacebookNewFeed::create([
+                    'id_user' => $idUser,
+                    'id_picture' => $picture->id,
+                    'content' => $content,
+                ]);
+            } else {
+                $picture = PictureOfUser::create([
+                    'id_user' => $idUser,
+                    'picture' => '',
+                ]);
+                $newfeed = FacebookNewFeed::create([
+                    'id_user' => $idUser,
+                    'content' => $content,
+                    'id_picture' => $picture->id,
+                ]);
+            }
+
+            DB::commit();
+            return response()->json([
+                'status' => 1,
+                'message' => 'Đã đăng status mới thành công !'
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'message' => 'Thất Bại !'
+            ]);
+        }
+    }
+    public function cancelStatus(Request $request)
+    {
+        if ($request->file != null) {
+            $filePath = public_path($request->file);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+                return response()->json([
+                    'status' => 1,
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 2,
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => 2,
+            ]);
+        }
     }
     public function logout(Request $request)
     {
@@ -101,5 +178,33 @@ class FacebookNewFeedController extends Controller
             'redirect' => route('homepage'),
             'messag' =>  'Đã Đăng Xuất Thành Công !'
         ]);
+    }
+    public function deleteStatus(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $login = Session::get('auth')->id;
+            $newFeed = FacebookNewFeed::find($request->id);
+            if ($newFeed && $newFeed->id_user == $login) {
+                $id_picture = $newFeed->id_picture;
+                $picture = PictureOfUser::find($id_picture);
+                if ($picture) {
+                    $picture->delete();
+                }
+                $newFeed->delete();
+                DB::commit();
+                return response()->json([
+                    'status' => 1,
+                    'message' => 'Đã xoá thành công bài viết !'
+                ]);
+            }
+        } catch (Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'message' => 'Thất bại !' . $e
+            ]);
+        }
     }
 }

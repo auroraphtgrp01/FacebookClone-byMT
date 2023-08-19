@@ -1,8 +1,9 @@
 $(document).ready(function () {
     toastr.options.showMethod = 'slideDown';
     toastr.options.progressBar = true;
+    // CKEDITOR.replace('editor');
     new Vue({
-        el: '#appNewFeed',
+        el: '#appNewFeed1',
         data: {
             listNewFeed: {},
             imgNewFeed: {},
@@ -14,17 +15,59 @@ $(document).ready(function () {
             userChat: {},
             profileInfo: {},
             friendInfo: {},
+            file: '',
+            filePath: '',
+            newStatus: {},
+            deleteStatus: {},
+            detailPicture: {}
         },
         created() {
             this.loadNewFeed();
         },
         methods: {
+            cancelStatus() {
+                payload = {
+                    'file': this.filePath,
+                };
+                axios
+                    .post('/api/newfeed/cancel-status', payload)
+                    .then((res) => {
+                        if (res.data.status) {
+                            this.file = '';
+                            this.filePath = '';
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+            },
             loadImg(arr) {
                 return arr.length;
             },
             testClick() {
                 toastr.success('Dang Click');
             },
+            deleteNewFeed(payload) {
+                console.log(payload);
+                axios
+                    .post('/api/newfeed/delete-status', payload)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        } else {
+                            toastr.error(res.data.message, 'Thất Bại !');
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+            }
+            ,
             openChat(value) {
                 $("#chatBox").show();
                 this.userChat = value;
@@ -42,7 +85,6 @@ $(document).ready(function () {
                             id: arrayObject[i].id
                         }
                     arr.push(obj);
-                    f
                 } return arr;
             },
 
@@ -56,6 +98,8 @@ $(document).ready(function () {
                         // console.log(this.imgNewFeed);
                         this.getListRequest();
                         this.loadUserData();
+                        console.log(this.listNewFeed);
+
                     })
                     .catch((res) => {
                         // $.each(res.response.data.errors, function (k, v) {
@@ -117,23 +161,46 @@ $(document).ready(function () {
                 this.$refs.fileInput.click();
             },
             handleFileChange(event) {
-                const selectedFile = event.target.files[0];
-                if (selectedFile) {
-                    this.selectedFileName = selectedFile.name;
-                }
+                this.file = this.$refs.fileInput.files[0];
+                var formData = new FormData();
+                formData.append('file', this.file);
+                axios
+                    .post('/api/newfeed/upload-file', formData, {
+                        header: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                    .then((res) => {
+                        this.filePath = res.data.path;
+
+
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+
             },
             uploadStatus() {
-                if (this.selectedFileName) {
-                    let formData = new FormData();
-                    formData.append('file', this.selectedFileName);
-                    axios
-                        .post('/api/newfeed/upload-status', formData, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            }
-                        })
-                        .then((res) => { });
-                }
+                this.newStatus.picture = this.filePath;
+                this.newStatus.id_user = this.userInfo.id;
+                console.log(this.newStatus);
+                axios
+                    .post('/api/newfeed/upload-status', this.newStatus)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        } else {
+                            toastr.error(res.data.message, 'Error');
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
             },
             logOut() {
                 axios

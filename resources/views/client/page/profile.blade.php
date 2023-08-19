@@ -143,18 +143,25 @@
                 <!--/ about -->
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="mb-0 fs-4"><b>Ảnh</b></h5>
+                        <div class="d-flex align-items-sm-center justify-content-between">
+                            <h5 class="mb-0 fs-4"><b>Ảnh</b></h5>
+                            <button class="btn text-primary ms-4 bg-hover" data-bs-target="#album" data-bs-toggle="modal"
+                                style="padding: 0;height: 30px; width: 100px;"><b>Xem
+                                    Album</b></button>
+                        </div>
                         <div class="row mt-1">
 
                             <template v-for="(v,k) in pictureOfUser">
-                                <div class="col-md-4 col-6 " style="padding: 3px;">
-                                    <button class="btn" style="padding: 0;" data-bs-toggle="modal"
-                                        v-on:click="detailPicture = v" data-bs-target="#showImg">
-                                        <img v-bind:src="v.picture" class="img-fluid rounded"
-                                            style="margin-top: 0; object-fit: cover; width: 147px; height: 145px;"
-                                            alt="avatar img" />
-                                    </button>
-                                </div>
+                                <template v-if="k < 9 && v.picture != ''">
+                                    <div class="col-md-4 col-6 " style="padding: 3px;">
+                                        <button class="btn" style="padding: 0;" data-bs-toggle="modal"
+                                            v-on:click="detailPicture = v" data-bs-target="#showImg">
+                                            <img v-bind:src="v.picture" class="img-fluid rounded"
+                                                style="margin-top: 0; object-fit: cover; width: 147px; height: 145px;"
+                                                alt="avatar img" />
+                                        </button>
+                                    </div>
+                                </template>
                             </template>
 
 
@@ -243,25 +250,41 @@
                 <template v-for="(v,k) in listNewFeed">
                     <div class="card">
                         <div class="card-body" style="padding-bottom: 0;">
-                            <div class="d-flex justify-content-start align-items-center mb-1">
+                            <div class="d-flex align-items-center mb-1" style="justify-content: space-between">
                                 <!-- avatar -->
-                                <div class="avatar me-1">
-                                    <img v-bind:src="v.avatar" alt="avatar img" height="40" width="40" />
+                                <div class="d-flex">
+                                    <a v-bind:href="'/profile/' + v.username" class="avatar me-1">
+                                        <img v-bind:src="v.avatar" alt="avatar img" height="40" width="40" />
+                                    </a>
+                                    <!--/ avatar -->
+                                    <div class="profile-user-info">
+                                        <h6 class="mb-0"><b>@{{ v.lastname }}
+                                                @{{ v.firstname }}</b>
+                                        </h6>
+                                        <small class="text">@{{ formatDate(v.created_at) }}</small>
+                                    </div>
                                 </div>
-                                <!--/ avatar -->
-                                <div class="profile-user-info">
-                                    <h6 class="mb-0"><b>@{{ v.lastname }}</b>
-                                    </h6>
-                                    <small class="text">@{{ formatDate(v.created_at) }}</small>
+                                <div class="d-flex">
+                                    <template v-if="userInfo.id == v.id_user">
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i
+                                                class="fa-solid fa-xmark" style="font-size: 1.2rem;"
+                                                v-on:click="deleteStatus = v"></i></button>
+                                    </template>
+
                                 </div>
                             </div>
                             <b v-html="v.content" class="card-text">
 
                             </b>
                             <!-- post img -->
-                            <img class="img-fluid rounded mb-75" v-bind:src="v.picture"
-                                style="width: 100%; height: 350px; background-size: cover;object-fit: cover;"
-                                alt="avatar img" />
+                            <template v-if="v.picture != '' ">
+                                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#showImg"
+                                    v-on:click="detailPicture = v">
+                                    <img class="img-fluid rounded mb-75"
+                                        style="width: 100%; height: 350px; object-fit:cover;" v-bind:src="v.picture"
+                                        alt="avatar img" />
+                                </div>
+                            </template>
 
                             <!--/ post img -->
 
@@ -336,6 +359,41 @@
             <div class="col-lg-1 col-12">
             </div>
         </div>
+        <div class="modal fade text-start" id="album" tabindex="-1" aria-labelledby="myModalLabel17"
+            aria-hidden="false">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel17">ALBUM</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row mt-1">
+                                    <template v-for="(v,k) in pictureOfUser">
+                                        <template v-if="v.picture != ''">
+                                            <div class="col-md-2 col-6 " style="padding: 3px;">
+                                                <button class="btn" style="padding: 0;">
+                                                    <img v-bind:src="v.picture" class="img-fluid rounded"
+                                                        style="margin-top: 0; object-fit: cover; width: 147px; height: 145px;"
+                                                        alt="avatar img" />
+                                                </button>
+                                            </div>
+                                        </template>
+                                    </template>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Accept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -393,6 +451,25 @@
                         <button type="button" class="btn btn-primary" style="margin: auto; width: 100%"
                             data-bs-dismiss="modal" v-on:click="uploadStatus()">Đăng
                             Bài</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade text-start" id="deleteModal" tabindex="-1" aria-labelledby="myModalLabel20"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xs">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel20">Cảnh Báo</h4>
+                    </div>
+                    <div class="modal-body">
+                        Bạn đang thực hiện thao tác xoá bài viết này. Bạn có chắc chắn muốn xoá ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal"
+                            aria-label="Close">Huỷ Bỏ</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            v-on:click="deleteNewFeed(deleteStatus)">Accept</button>
                     </div>
                 </div>
             </div>
