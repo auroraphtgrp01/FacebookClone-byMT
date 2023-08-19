@@ -1,6 +1,6 @@
 $('document').ready(function () {
     new Vue({
-        el: '#app',
+        el: '',
         data: {
 
         },

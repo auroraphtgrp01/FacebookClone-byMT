@@ -25,6 +25,7 @@ $(document).ready(function () {
             this.loadNewFeed();
         },
         methods: {
+            // STATUS ACTION
             cancelStatus() {
                 payload = {
                     'file': this.filePath,
@@ -43,14 +44,7 @@ $(document).ready(function () {
                         });
                     });
             },
-            loadImg(arr) {
-                return arr.length;
-            },
-            testClick() {
-                toastr.success('Dang Click');
-            },
             deleteNewFeed(payload) {
-                console.log(payload);
                 axios
                     .post('/api/newfeed/delete-status', payload)
                     .then((res) => {
@@ -66,59 +60,6 @@ $(document).ready(function () {
                             toastr.error(v[0], 'Error');
                         });
                     });
-            }
-            ,
-            openChat(value) {
-                $("#chatBox").show();
-                this.userChat = value;
-                console.log(this.userChat);
-            },
-            createImageObject(arrayObject) {
-                this.imgNewFeed = {};
-
-                let obj = {}, arr = [];
-                for (let i = 0; i < arrayObject.length; i++) {
-                    const splitLinks = arrayObject[i].hinh_anh.split(';');
-                    if (splitLinks[0])
-                        obj = {
-                            link: splitLinks,
-                            id: arrayObject[i].id
-                        }
-                    arr.push(obj);
-                } return arr;
-            },
-
-            loadNewFeed() {
-                axios
-                    .post('/api/newfeed/data')
-                    .then((res) => {
-                        this.listNewFeed = res.data.data;
-                        this.userInfo = res.data.user;
-                        // this.imgNewFeed = this.createImageObject(this.listNewFeed);
-                        // console.log(this.imgNewFeed);
-                        this.getListRequest();
-                        this.loadUserData();
-                        console.log(this.listNewFeed);
-
-                    })
-                    .catch((res) => {
-                        // $.each(res.response.data.errors, function (k, v) {
-                        //     toastr.error(v[0], 'Error');
-                        // });
-                    });
-            },
-            formatDate(dateTimeString) {
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                const dateTime = new Date(dateTimeString);
-                const formattedDate = dateTime.toLocaleDateString('vi-VN', options);
-                return formattedDate;
-            },
-            loadUserData() {
-                axios
-                    .post('/api/newfeed/data-user',)
-                    .then((res) => {
-                        this.listUser = res.data.data;
-                    });
             },
             changeReact(payload) {
                 axios
@@ -127,38 +68,27 @@ $(document).ready(function () {
                         this.loadNewFeed();
                     });
             },
-            getListRequest() {
-                axios
-                    .post('/api/newfeed/get-list-request',)
-                    .then((res) => {
-                        this.listRequest = res.data.data;
-                    });
+            showUploader() {
+                this.$refs.fileInput.click();
             },
-            acceptFriend(payload) {
+            uploadStatus() {
+                this.newStatus.picture = this.filePath;
+                this.newStatus.id_user = this.userInfo.id;
                 axios
-                    .post('/api/newfeed/accept-friend', payload)
+                    .post('/api/newfeed/upload-status', this.newStatus)
                     .then((res) => {
                         if (res.data.status) {
                             toastr.success(res.data.message, 'Thành Công !');
                             this.loadNewFeed();
-                        }
-                    });
-            },
-            refuseFriend(payload) {
-                axios
-                    .post('/api/newfeed/refuse-friend', payload)
-                    .then((res) => {
-
-                        if (res.data.status) {
-                            toastr.error(res.data.message, 'Thành Công !');
-                            this.loadNewFeed();
                         } else {
-                            toastr.error(res.data.message, 'Thất Bại');
+                            toastr.error(res.data.message, 'Error');
                         }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function (k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
                     });
-            },
-            showUploader() {
-                this.$refs.fileInput.click();
             },
             handleFileChange(event) {
                 this.file = this.$refs.fileInput.files[0];
@@ -182,19 +112,20 @@ $(document).ready(function () {
                     });
 
             },
-            uploadStatus() {
-                this.newStatus.picture = this.filePath;
-                this.newStatus.id_user = this.userInfo.id;
-                console.log(this.newStatus);
+            // END STATUS ACTION
+            // --------------------------------------------------------------------------------------------------------------
+            // LOAD DATA
+            loadImg(arr) {
+                return arr.length;
+            },
+            loadNewFeed() {
                 axios
-                    .post('/api/newfeed/upload-status', this.newStatus)
+                    .post('/api/newfeed/data')
                     .then((res) => {
-                        if (res.data.status) {
-                            toastr.success(res.data.message, 'Thành Công !');
-                            this.loadNewFeed();
-                        } else {
-                            toastr.error(res.data.message, 'Error');
-                        }
+                        this.listNewFeed = res.data.data;
+                        this.userInfo = res.data.user;
+                        this.getListRequest();
+                        this.loadUserData();
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function (k, v) {
@@ -202,21 +133,11 @@ $(document).ready(function () {
                         });
                     });
             },
-            logOut() {
+            loadUserData() {
                 axios
-                    .post('/api/newfeed/log-out',)
+                    .post('/api/newfeed/data-user',)
                     .then((res) => {
-                        if (res.data.status) {
-                            toastr.success(res.data.message, 'Thành Công !');
-                            setTimeout(() => {
-                                window.location.href = res.data.redirect;
-                            }, 1000);
-                        }
-                    })
-                    .catch((res) => {
-                        $.each(res.response.data.errors, function (k, v) {
-                            toastr.error(v[0], 'Error');
-                        });
+                        this.listUser = res.data.data;
                     });
             },
             loadProfile(id) {
@@ -227,7 +148,6 @@ $(document).ready(function () {
                             this.profileInfo = res.data.user;
                             this.friendInfo = res.data.friend;
                             window.location.href = res.data.redirect;
-                            console.log(this.profileInfo);
                         } else {
                             toastr.error(res.data.message, 'Error !')
                         }
@@ -237,14 +157,79 @@ $(document).ready(function () {
                             toastr.error(v[0], 'Error');
                         });
                     });
-            }
+            },
+            getListRequest() {
+                axios
+                    .post('/api/newfeed/get-list-request',)
+                    .then((res) => {
+                        this.listRequest = res.data.data;
+                    });
+            },
+            // END LOAD DATA
+            // --------------------------------------------------------------------------------------------------------------
+            // FUNCTION EXTEND
+            openChat(value) {
+                $("#chatBox").show();
+                this.userChat = value;
+            },
+            createImageObject(arrayObject) {
+                this.imgNewFeed = {};
+
+                let obj = {}, arr = [];
+                for (let i = 0; i < arrayObject.length; i++) {
+                    const splitLinks = arrayObject[i].hinh_anh.split(';');
+                    if (splitLinks[0])
+                        obj = {
+                            link: splitLinks,
+                            id: arrayObject[i].id
+                        }
+                    arr.push(obj);
+                } return arr;
+            },
+            formatDate(dateTimeString) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateTime = new Date(dateTimeString);
+                const formattedDate = dateTime.toLocaleDateString('vi-VN', options);
+                return formattedDate;
+            },
+            testClick() {
+                toastr.success('Dang Click');
+            },
+            // END FUNCTION EXTEND
+            // --------------------------------------------------------------------------------------------------------------
+            // FRIEND ACTION
+            acceptFriend(payload) {
+                axios
+                    .post('/api/newfeed/accept-friend', payload)
+                    .then((res) => {
+                        if (res.data.status) {
+                            toastr.success(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        }
+                    });
+            },
+            refuseFriend(payload) {
+                axios
+                    .post('/api/newfeed/refuse-friend', payload)
+                    .then((res) => {
+
+                        if (res.data.status) {
+                            toastr.error(res.data.message, 'Thành Công !');
+                            this.loadNewFeed();
+                        } else {
+                            toastr.error(res.data.message, 'Thất Bại');
+                        }
+                    });
+            },
+            // END FRIEND ACTION
+            // --------------------------------------------------------------------------------------------------------------
+
         },
     });
-    // Show / Hide Box Chat
+    //    JQUERY ACTION
     $("#showChat").click(function () {
         $("#chatBox").show();
     });
-
     $("#hideChat").click(function () {
         $("#chatBox").hide();
     });

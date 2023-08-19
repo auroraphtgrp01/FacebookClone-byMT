@@ -6,15 +6,11 @@
             style="background: linear-gradient(180deg, rgb(255 255 255 / 0%) 44%, rgb(22 29 49 / 0%) 73%, rgba(22, 29, 49, 0));">
         </div>
         <div class="content-wrapper container-xxl p-0">
-
             <div class="content-body">
                 <div>
-                    <!-- profile info section -->
-
                     <section>
-
                         <div class="row">
-                            <!-- left profile info section -->
+                            {{--  --}}
                             <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar left-panel"
                                 id="leftPanel" style="">
                                 <!-- about -->
@@ -113,14 +109,14 @@
 
                                 <!--/ twitter feed card -->
                             </div>
-                            <!--/ left profile info section -->
+                            {{--  --}}
+                            {{-- LEFT PANEL --}}
                             <div class="col-lg-3 col-12 order-2 order-lg-1 scrollable-panel hide-scrollbar ">
                             </div>
-                            <!-- center profile info section -->
+                            {{-- END LEFT PANEL --}}
+                            {{-- CENTER PANEL --}}
                             <div class="col-lg-6 col-12 order-1 order-lg-2 center-panel" style="" id="centerPanel">
-
                                 <div class="col">
-
                                     {{-- <div class="cards">
                                     <div class="mb-2" style="width: 100%;">
                                         <div id="carouselExampleRide" class="carousel slide" style=""
@@ -248,7 +244,7 @@
                                     </div>
                                 </div> --}}
                                 </div>
-                                {{-- Create NewFeed  --}}
+                                {{-- CREATE NEWFEED --}}
                                 <div class="card" style="height:150px;">
                                     <div class="card-body">
                                         <div class="row">
@@ -265,7 +261,6 @@
                                                     thế
                                                     ?</button>
                                             </div>
-
                                             <div class="dropdown-divider mt-2"></div>
                                             <ul class="d-flex">
                                                 <li class="btn button_list-item d-flex">
@@ -295,9 +290,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- end --}}
+                                {{-- END CREATE NEWFEED --}}
 
-                                <!-- post -->
+                                {{-- POST NEWFEED --}}
                                 <template v-for="(v, k) in listNewFeed">
                                     <div class="card">
                                         <div class="card-body" style="padding-bottom: 0;">
@@ -328,9 +323,7 @@
                                                 </div>
                                             </div>
                                             <b v-html="v.content" class="card-text">
-
                                             </b>
-                                            <!-- post img -->
                                             <template v-if="v.picture != '' ">
                                                 <div class="cursor-pointer" data-bs-toggle="modal"
                                                     data-bs-target="#showImg" v-on:click="detailPicture = v">
@@ -339,10 +332,6 @@
                                                         v-bind:src="v.picture" alt="avatar img" />
                                                 </div>
                                             </template>
-
-                                            <!--/ post img -->
-
-                                            <!-- like share -->
                                             <div class="row d-flex justify-content-start align-items-center flex-wrap ">
                                                 <ul class="list-react d-flex">
                                                     <li class="list-react--item" style="">
@@ -369,11 +358,9 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <!-- share and like count and icons -->
                                             </div>
-                                            <!-- like share -->
                                             <div class="dropdown-divider" style="margin-top: -5px;"></div>
-                                            {{-- React Button --}}
+
                                             <div class="row d-flex justify-content-start align-items-center flex-wrap">
                                                 <ul class="list-react__button d-flex">
                                                     <template v-if="v.like_status == 0">
@@ -385,7 +372,6 @@
                                                                 style="margin-top: 1px;">Thích</b>
                                                         </li>
                                                     </template>
-
                                                     <li v-on:click="changeReact(v)" v-else
                                                         class="btn ps-10 d-flex button-react">
                                                         <i class="fa-regular ficon fa-heart button-react--icon"></i>
@@ -403,27 +389,18 @@
                                                             Sẻ</b>
                                                     </li>
                                                 </ul>
-                                                <!-- share and like count and icons -->
                                             </div>
-                                            <!-- comments -->
-
-                                            <!--/ comments -->
-
-                                            <!-- comment box -->
                                         </div>
                                     </div>
                                 </template>
-
-
-                                <!--/ post -->
-
+                                {{-- END POST NEWFEED --}}
                             </div>
-                            <!--/ center profile info section -->
+                            {{-- END CENTER PANEL --}}
 
-                            <!-- right profile info section -->
+                            {{-- RIGHT PANEL --}}
                             <div class="col-lg-3 col-12 order-3 scrollable-panel hide-scrollbar right-panel"
                                 style="" id="rightPanel">
-                                <!-- latest profile pictures -->
+                                {{-- LIST REQUEST --}}
                                 <div class="card">
                                     <div class="card-body" style="padding: 0;">
                                         <h5 style="padding: 15px 0 0 15px;" class="mb-0"><b>Lời Mời Kết Bạn</b></h5>
@@ -465,15 +442,12 @@
                                                 <div class="dropdown-divider mt-1 mb-1"></div>
 
                                             </template>
-
-
-
                                         </ul>
                                     </div>
                                 </div>
-                                <!--/ latest profile pictures -->
+                                {{-- END LIST REQUEST --}}
 
-                                <!-- suggestion -->
+                                {{-- CONTACT --}}
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -498,22 +472,12 @@
                                                 </div>
                                             </div>
                                         </template>
-
-
                                     </div>
                                 </div>
-                                <!--/ suggestion -->
-
-                                <!-- polls card -->
-
-
-                                <!--/ polls card -->
+                                {{-- END CONTACT --}}
                             </div>
-                            <!--/ right profile info section -->
+                            {{-- END RIGHT PANEL --}}
                         </div>
-
-
-
                         {{-- CHAT --}}
                         <div id="chatBox" class="col-lg-4 col-md-6 col-12 chatbox-animation" style="display: none;">
                             <div class="card chat-widget chat-custom">
@@ -606,6 +570,9 @@
                                 <!-- User Chat messages -->
                             </div>
                         </div>
+                        {{-- END CHAT --}}
+                        {{-- MODAL --}}
+                        {{-- MODAL PICTURE --}}
                         <div class="modal fade text-start" id="showImg" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -617,6 +584,7 @@
 
                             </div>
                         </div>
+                        {{-- MODAL STATUS --}}
                         <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true"
                             data-bs-backdrop='static'>
                             <div class="modal-dialog modal-dialog-centered">
@@ -697,6 +665,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- MODAL DELETE --}}
                         <div class="modal fade text-start" id="deleteModal" tabindex="-1"
                             aria-labelledby="myModalLabel20" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-xs">
@@ -716,8 +685,8 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- END MODAL --}}
                     </section>
-                    <!--/ profile info section -->
                 </div>
             </div>
         </div>

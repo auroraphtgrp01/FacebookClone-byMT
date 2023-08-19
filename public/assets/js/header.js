@@ -5,7 +5,6 @@ $(document).ready(function () {
             userInfo: {},
         },
         created() {
-            console.log('ssdsddsdssd');
             this.loadHeader();
         },
         methods: {
@@ -14,14 +13,14 @@ $(document).ready(function () {
                     .post('/api/header/header-data',)
                     .then((res) => {
                         this.userInfo = res.data.data;
-                        console.log(this.userInfo);
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function (k, v) {
                             toastr.error(v[0], 'Error');
                         });
                     });
-            }, logOut() {
+            },
+            logOut() {
                 axios
                     .post('/api/newfeed/log-out',)
                     .then((res) => {

@@ -4,7 +4,6 @@
         <div class="col-md-3 searchBox d-flex">
             <a href="/new-feed">
                 <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
-
             </a>
             <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -70,10 +69,8 @@
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
                                 <div class="list-item align-items-start">
                                     <div class="me-1 d-flex ">
-                                        <span class="avatar"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="50" width="50"><span
-                                                class="avatar-status-online"></span></span>
+                                        <span class="avatar"><img class="round" alt="avatar" height="50"
+                                                width="50"><span class="avatar-status-online"></span></span>
                                         <div class="list-item-body flex-grow-1 ms-1" style="margin: auto">
                                             <p class="media-heading"><span class="fw-bolder"><b>Minh Tuan</b></span></p>
                                             <p class="media-heading">
@@ -87,10 +84,8 @@
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
                                 <div class="list-item align-items-start">
                                     <div class="me-1 d-flex ">
-                                        <span class="avatar"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="50" width="50"><span
-                                                class="avatar-status-online"></span></span>
+                                        <span class="avatar"><img class="round" alt="avatar" height="50"
+                                                width="50"><span class="avatar-status-online"></span></span>
                                         <div class="list-item-body flex-grow-1 ms-1" style="margin: auto">
                                             <p class="media-heading"><span class="fw-bolder"><b>Minh Tuan</b></span>
                                             </p>
@@ -105,10 +100,8 @@
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
                                 <div class="list-item align-items-start">
                                     <div class="me-1 d-flex ">
-                                        <span class="avatar"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="50" width="50"><span
-                                                class="avatar-status-online"></span></span>
+                                        <span class="avatar"><img class="round" alt="avatar" height="50"
+                                                width="50"><span class="avatar-status-online"></span></span>
                                         <div class="list-item-body flex-grow-1 ms-1" style="margin: auto">
                                             <p class="media-heading"><span class="fw-bolder"><b>Minh Tuan</b></span>
                                             </p>
@@ -123,10 +116,8 @@
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
                                 <div class="list-item align-items-start">
                                     <div class="me-1 d-flex ">
-                                        <span class="avatar"><img class="round"
-                                                src="/vuexy_assets/app-assets//images/portrait/small/avatar-s-11.jpg"
-                                                alt="avatar" height="50" width="50"><span
-                                                class="avatar-status-online"></span></span>
+                                        <span class="avatar"><img class="round" alt="avatar" height="50"
+                                                width="50"><span class="avatar-status-online"></span></span>
                                         <div class="list-item-body flex-grow-1 ms-1" style="margin: auto">
                                             <p class="media-heading"><span class="fw-bolder"><b>Minh Tuan</b></span>
                                             </p>
@@ -176,9 +167,7 @@
                             <a class="d-flex" href="#">
                                 <div class="list-item d-flex align-items-start">
                                     <div class="me-1">
-                                        <div class="avatar"><img
-                                                src="/vuexy_assets/app-assets/images/portrait/small/avatar-s-15.jpg"
-                                                alt="avatar" width="40" height="40"></div>
+                                        <div class="avatar"><img alt="avatar" width="40" height="40"></div>
                                     </div>
                                     <div class="list-item-body flex-grow-1" style="margin: auto;">
                                         <p class="media-heading"><span class="fw-bolder">

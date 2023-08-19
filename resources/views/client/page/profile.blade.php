@@ -7,9 +7,9 @@
                 <div class="card profile-header mb-2">
                     <!-- Ảnh Bìa -->
                     <div style="border-radius: 50px;"> <img class="card-img-top" style="border-radius: 8px;"
-                            src="/vuexy_assets/app-assets/images/profile/user-uploads/timeline.png"
-                            alt="User Profile Image" /></div>
+                            src="/assets/img/wall.png" alt="User Profile Image" /></div>
                     <!--/ Ảnh Bìa -->
+                    {{-- INFO USER --}}
                     <div class="position-relative d-flex" style="justify-content: space-between">
                         <!-- Avatar -->
                         <div class="profile-img-container d-flex align-items-center"
@@ -60,14 +60,11 @@
 
                         </div>
                     </div>
-
+                    {{-- END INFO USER --}}
                     <hr style="margin-top: 2rem;">
-                    <!-- tabs pill -->
                     <div class="profile-header-nav">
-                        <!-- navbar -->
                         <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100 ms-2"
                             style="padding: 0; margin-top: -10px;">
-                            <!-- collapse  -->
                             <div class="card-body" style="padding: 0;">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
@@ -104,24 +101,19 @@
             </div>
             <div class="col-1"></div>
         </div>
-        <!--/ profile header -->
 
-        <!-- profile info section -->
         <div class="row" style="margin-top: 10px;">
             <div class="col-12" style="me-2">
-
             </div>
-            <!-- left profile info section -->
+            {{-- FIRST PANEL --}}
             <div class="col-lg-4 col-12 order-2 order-lg-1 ms-5">
-                <!-- about -->
+                <!-- ABOUT -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="mb-75 fs-4"><b>Giới thiệu</b></h5>
-
                         <p class="card-text mt-2">
                             <i class="fa-solid fa-location-dot fs-3 me-1" style="margin-left: -3px;"></i> Đến Từ <b>Đà
                                 Nẵng</b>
-
                         </p>
                         <div class="mt-2 d-flex" style="align-item: center;margin-left: -5px;">
                             <p class="card-text d-flex" style="align-item: center;">
@@ -140,7 +132,8 @@
                         </div>
                     </div>
                 </div>
-                <!--/ about -->
+                <!--/ ABOUT -->
+                {{-- ALBUM --}}
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-sm-center justify-content-between">
@@ -168,7 +161,8 @@
                         </div>
                     </div>
                 </div>
-
+                {{-- END ALBUM --}}
+                {{-- FRIEND --}}
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex" style="justify-content: space-between; align-items: center;">
@@ -191,17 +185,14 @@
                                     </h6>
                                 </div>
                             </template>
-
-
                         </div>
                     </div>
                 </div>
-                <!--/ twitter feed card -->
+                {{-- END FRIEND --}}
             </div>
-            <!--/ left profile info section -->
-
-            <!-- center profile info section -->
+            <!-- SECOND PANEL -->
             <div class="col-lg-5 col-12 order-1 order-lg-2" style="">
+                {{-- HEADER_STATUS CARD --}}
                 <div class="card" style="height:150px;">
                     <div class="card-body">
                         <div class="row">
@@ -247,6 +238,8 @@
                         </div>
                     </div>
                 </div>
+                {{-- END HEADER_STATUS CARD --}}
+                {{-- POST NEWFEED --}}
                 <template v-for="(v,k) in listNewFeed">
                     <div class="card">
                         <div class="card-body" style="padding-bottom: 0;">
@@ -265,7 +258,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex">
-                                    <template v-if="userInfo.id == v.id_user">
+                                    <template v-if="userLogin == v.id_user">
                                         <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i
                                                 class="fa-solid fa-xmark" style="font-size: 1.2rem;"
                                                 v-on:click="deleteStatus = v"></i></button>
@@ -322,12 +315,6 @@
                             {{-- React Button --}}
                             <div class="row d-flex justify-content-start align-items-center flex-wrap">
                                 <ul class="list-react__button d-flex">
-                                    {{-- <template v-if="v.like_status == 0">
-                            <li v-on:click="" class="btn ps-10 d-flex button-react">
-                                <i class="fa-solid ficon fa-heart button-react--icon text-primary"></i>
-                                <b class="ms-1 text-primary" style="margin-top: 1px;">Thích</b>
-                            </li>
-                        </template> --}}
                                     <template v-if="v.like_status == 0">
                                         <li v-on:click="changeReact(v)" class="btn ps-10 d-flex button-react">
                                             <i class="fa-solid ficon fa-heart button-react--icon text-primary"></i>
@@ -354,11 +341,15 @@
                         </div>
                     </div>
                 </template>
-
+                {{-- END POSTNEWFEED --}}
             </div>
+            {{-- END SECOND PANEL --}}
             <div class="col-lg-1 col-12">
             </div>
         </div>
+
+        {{-- MODAL --}}
+        {{-- MODAL ALBUM --}}
         <div class="modal fade text-start" id="album" tabindex="-1" aria-labelledby="myModalLabel17"
             aria-hidden="false">
             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -382,23 +373,23 @@
                                             </div>
                                         </template>
                                     </template>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Accept</button>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true">
+        {{-- MODAL STATUS --}}
+        <div class="modal fade text-start" id="newStatus" tabindex="-1" aria-hidden="true" data-bs-backdrop='static'>
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="d-flex mt-1">
-                        <h3 class="modal-title" style="margin: auto"><b>Tạo bài viết</b></h3>
+                        <h3 class="modal-title" style="margin: auto"><b style="margin-left: 45px;">Tạo
+                                bài viết</b></h3>
+                        <button class="btn" data-bs-toggle="modal" data-bs-dismiss="modal"><i
+                                class="fa-solid fa-xmark" v-on:click="cancelStatus()"
+                                style="font-size: 1.4rem;"></i></button>
                     </div>
                     <div class="dropdown-divider mt-1"></div>
                     <div class="modal-body">
@@ -421,21 +412,27 @@
                                                 Bạn
                                                 bè</a></li>
                                         <li><a class="dropdown-item" style="padding:5px; font-size: 12px;"
-                                                href="#"> <i class="me-1 fa-solid fa-lock"></i> Chỉ mình
+                                                href="#"> <i class="me-1 fa-solid fa-lock"></i> Chỉ
+                                                mình
                                                 tôi</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <textarea name="" class="form-control" id="" cols="30" rows="5"
+                        {{-- <textarea name="" id="contentBox" name="content_status" cols="30" rows="10"></textarea> --}}
+                        <textarea name="content" v-model="newStatus.content" class="form-control" cols="30" rows="5"
                             placeholder="Bạn đang nghĩ gì thế ? " style=""></textarea>
+                        <div v-if="filePath != '' " class="d-flex">
+                            <img v-bind:src="'/'+filePath" class="img-fluid mt-1"
+                                style="width: 100%; height: 300px; object-fit: cover; margin:auto; border-radius: 10px;">
+                        </div>
                         <div class="d-flex">
                             <button v-on:click="showUploader()" class="select-files btn mt-2 btn-outline-success"
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png" alt=""
                                     style="height: 24px; width: 24px;"> Thêm Ảnh</button>
-                            <input type="file" name="" ref="fileInput" class="form-control d-none"
-                                id="">
+                            <input type="file" name="" ref="fileInput" v-on:change="handleFileChange"
+                                class="form-control d-none" id="" ref="file">
                             <button class="btn mt-2 btn-outline-primary"
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/MqTJr_DM3Jg.png" alt=""
@@ -455,6 +452,7 @@
                 </div>
             </div>
         </div>
+        {{-- MODAL DELETE --}}
         <div class="modal fade text-start" id="deleteModal" tabindex="-1" aria-labelledby="myModalLabel20"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xs">
@@ -474,6 +472,7 @@
                 </div>
             </div>
         </div>
+        {{-- MODAL REMOVE --}}
         <div class="modal fade text-start modal-warning" id="removeFriend" tabindex="-1"
             aria-labelledby="myModalLabel140" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -492,6 +491,7 @@
                 </div>
             </div>
         </div>
+        {{-- MODAL PICTURE --}}
         <div class="modal fade text-start" id="showImg" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -503,6 +503,7 @@
 
             </div>
         </div>
+        {{-- ENDMODAL --}}
     </div>
     </div>
 @endsection

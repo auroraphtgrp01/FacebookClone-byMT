@@ -25,7 +25,6 @@ class APIProfileControlelr extends Controller
         $profile = UserFacebook::where('username', $request->username)->first();
         if ($profile) {
             $userID = $profile->id;
-
             $dataNewFeed = FacebookNewFeed::join('user_facebooks', 'user_facebooks.id', 'facebook_new_feeds.id_user')
                 ->join('picture_of_users', 'picture_of_users.id', 'facebook_new_feeds.id_picture')
                 ->select('facebook_new_feeds.*', 'user_facebooks.firstname', 'user_facebooks.lastname', 'user_facebooks.avatar', 'user_facebooks.username', 'picture_of_users.picture')
@@ -56,6 +55,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 0,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
+                    'userLogin' => $userLoginID,
                 ]);
             }
             if ($check_relationship) {
@@ -65,6 +65,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 1,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
+                    'userLogin' => $userLoginID,
 
                 ]);
             } else if ($check_request == null && $check_add == null) {
@@ -74,6 +75,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 3,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
+                    'userLogin' => $userLoginID,
 
                 ]);
             }
@@ -84,6 +86,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 4,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
+                    'userLogin' => $userLoginID,
 
                 ]);
             }
@@ -94,6 +97,7 @@ class APIProfileControlelr extends Controller
                     'status_friend' => 2,
                     'picture' => $picture,
                     'newfeed' => $dataNewFeed,
+                    'userLogin' => $userLoginID,
 
                 ]);
             }

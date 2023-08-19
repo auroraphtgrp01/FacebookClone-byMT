@@ -1,9 +1,9 @@
-<script src="/vuexy_assets/app-assets/vendors/js/vendors.min.js"></script>
+<script src="/assets/app-assets/vendors/js/vendors.min.js"></script>
 <!-- BEGIN Vendor JS-->
-<script src="/vuexy_assets/app-assets/vendors/js/vendors.min.js"></script>
+<script src="/assets/app-assets/vendors/js/vendors.min.js"></script>
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="/vuexy_assets/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+<script src="/assets/app-assets/vendors/js/ui/jquery.sticky.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
 </script>
@@ -15,17 +15,17 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- END: Page Vendor JS-->
 
-<script src="/vuexy_assets/app-assets/js/scripts/pages/page-profile.js"></script>
-<script src="/vuexy_assets/app-assets/js/scripts/cards/card-advance.js"></script>
+<script src="/assets/app-assets/js/scripts/pages/page-profile.js"></script>
+<script src="/assets/app-assets/js/scripts/cards/card-advance.js"></script>
 
 <!-- BEGIN: Theme JS-->
-<script src="/vuexy_assets/app-assets/js/core/app-menu.js"></script>
-<script src="/vuexy_assets/app-assets/js/core/app.js"></script>
+<script src="/assets/app-assets/js/core/app-menu.js"></script>
+<script src="/assets/app-assets/js/core/app.js"></script>
 <!-- END: Theme JS-->
 
 <!-- BEGIN: Page JS-->
 <!-- END: Page JS-->
-<script src="/assets/js/app.js"></script>
+{{-- <script src="/assets/js/app.js"></script> --}}
 <script src="/assets/js/api.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/test.js"></script>
