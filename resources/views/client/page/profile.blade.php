@@ -3,16 +3,35 @@
     <div id="user-profile">
         <div class="row">
             <div class="col-1"></div>
-            <div class="col-9 ms-5">
+            <div class="col-9 ms-5 col-none">
                 <div class="card profile-header mb-2">
                     <!-- Ảnh Bìa -->
                     <div style="border-radius: 50px;"> <img class="card-img-top" style="border-radius: 8px;"
                             src="/assets/img/wall.png" alt="User Profile Image" /></div>
                     <!--/ Ảnh Bìa -->
                     {{-- INFO USER --}}
-                    <div class="position-relative d-flex" style="justify-content: space-between">
+                    <div class="position-relative d-flex re-bottom" style="justify-content: space-between">
                         <!-- Avatar -->
-                        <div class="profile-img-container d-flex align-items-center"
+                        <div class="profile-img-container d-flex align-items-center profile--normal"
+                            style="position: relative; margin-top: -80px;">
+                            <div class="profile-img" style="border-radius: 50%; width: 150px; height: 150px;">
+                                <img v-bind:src="userInfo.avatar" class="img-fluid" style="border-radius: 50%;" />
+                            </div>
+                            <!-- Avatar -->
+                            <div class="profile-title ms-1 mt-2">
+                                <h2 class="text mt-3">@{{ userInfo.firstname }} @{{ userInfo.lastname }}</h2>
+                                <h5 class="text">1.1k bạn bè</h5>
+                                <div class="avatar-group" style="margin-bottom: 2.5rem;">
+                                    <template v-for="(v,k) in listFriend">
+                                        <a v-bind:href="'/profile/' + v.username" class="avatar" v-if="k < 5">
+                                            <img v-bind:src="v.avatar" alt="Avatar" height="32" width="32">
+                                        </a>
+                                    </template>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="profile-img-container d-flex align-items-center profile_responsive"
                             style="position: relative; margin-top: -80px;">
                             <div class="profile-img" style="border-radius: 50%; width: 150px; height: 150px;">
                                 <img v-bind:src="userInfo.avatar" class="img-fluid" style="border-radius: 50%;" />
@@ -33,21 +52,23 @@
                         </div>
                         <div class="d-flex button-group--addfr me-3" style="margin-top:5rem;">
                             <template v-if="statusAdd == 3">
-                                <button class="btn me-2" v-on:click="addFriend()"
+                                <button class="profile--normal btn me-2" v-on:click="addFriend()"
                                     style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
                                     <i class="fa-solid fa-user-plus me-1"></i><b>Thêm bạn
                                         bè</b></button>
                             </template>
-                            <button v-if="statusAdd == 2" class="btn me-2" v-on:click="cancelFriendRequest()"
+                            <button v-if="statusAdd == 2" class="profile--normal btn me-2"
+                                v-on:click="cancelFriendRequest()"
                                 style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;"> <i
                                     class="fa-solid fa-user-plus me-1"></i><b>Huỷ lời mời</b></button>
-                            <button v-if="statusAdd == 4" class="btn me-2" v-on:click="acceptFriend()"
+                            <button v-if="statusAdd == 4" class="profile--normal btn me-2" v-on:click="acceptFriend()"
                                 style="height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
                                 <i class="fa-solid fa-user-check ms-1"></i><b class="ms-1 me-2">Chấp nhận kết bạn
                                 </b></button>
-                            <div class="btn-group" v-if="statusAdd == 1">
+                            <div class="btn-group btn-group--res" v-if="statusAdd == 1">
                                 <button id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
-                                    class="btn me-2 dropdown-toggle waves-effect waves-float waves-light" v-on:click=""
+                                    class="profile--normal btn me-2 dropdown-toggle waves-effect waves-float waves-light"
+                                    v-on:click=""
                                     style="width: 150px; height: 40px; background-color: #1b74e4; color: #fff; padding: 0;">
                                     <i class="fa-solid fa-user-group me-1"></i><b>Bạn bè</b></button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
@@ -55,7 +76,8 @@
                                         Bạn</a>
                                 </div>
                             </div>
-                            <button class="btn" style="width: 120px; height: 40px;background-color: #ccc; padding: 0; ">
+                            <button class="btn profile--normal"
+                                style="width: 120px; height: 40px;background-color: #ccc; padding: 0; ">
                                 <i class="fa-brands fa-facebook-messenger me-1"></i>Nhắn tin</button>
 
                         </div>
@@ -106,7 +128,7 @@
             <div class="col-12" style="me-2">
             </div>
             {{-- FIRST PANEL --}}
-            <div class="col-lg-4 col-12 order-2 order-lg-1 ms-5">
+            <div class="col-lg-4 col-12 order-2 order-lg-1 ms-5 profile--normal">
                 <!-- ABOUT -->
                 <div class="card">
                     <div class="card-body">
@@ -196,10 +218,10 @@
                 <div class="card" style="height:150px;">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-md-1 col-avatar">
                                 <img v-bind:src="userLogin.avatar" alt="" class="right-nav--avatar">
                             </div>
-                            <div class="col-md ms-1">
+                            <div class="col-md col-input col-input1">
                                 <button class="btn status-newfeed_create--btn text-start" data-bs-toggle="modal"
                                     data-bs-target="#newStatus">@{{ userLogin.lastname }}
                                     ơi, bạn đang
@@ -210,27 +232,30 @@
                             </div>
 
                             <div class="dropdown-divider mt-2"></div>
-                            <ul class="d-flex">
+                            <ul class="d-flex button-group--status">
                                 <li class="btn button_list-item d-flex">
                                     <img height="20" width="20" alt=""
                                         referrerpolicy="origin-when-cross-origin"
                                         src="https://static.xx.fbcdn.net/rsrc.php/v3/yF/r/v1iF2605Cb5.png">
-                                    <b class="" style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Video
+                                    <b class="button_label"
+                                        style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Video
                                         Trực Tiếp</b>
                                 </li>
                                 <li class="btn button_list-item d-flex">
                                     <img height="20" width="20" alt=""
                                         referrerpolicy="origin-when-cross-origin"
                                         src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png">
-                                    <b class="" style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Ảnh
-                                        /
+                                    <b class="button_label"
+                                        style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Ảnh
+
                                         Video</b>
                                 </li>
                                 <li class="btn button_list-item d-flex">
                                     <img height="20" width="20" alt=""
                                         referrerpolicy="origin-when-cross-origin"
                                         src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/yMDS19UDsWe.png">
-                                    <b class="" style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Cảm
+                                    <b class="button_label"
+                                        style="margin-left: 7px;font-size: 0.8rem;margin-top: 4px;">Cảm
                                         xúc
                                         / Hoạt động</b>
                                 </li>
@@ -297,10 +322,14 @@
                                             src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 16 16'%3e%3cdefs%3e%3clinearGradient id='a' x1='50%25' x2='50%25' y1='10.25%25' y2='100%25'%3e%3cstop offset='0%25' stop-color='%23FEEA70'/%3e%3cstop offset='100%25' stop-color='%23F69B30'/%3e%3c/linearGradient%3e%3clinearGradient id='d' x1='50%25' x2='50%25' y1='0%25' y2='100%25'%3e%3cstop offset='0%25' stop-color='%23472315'/%3e%3cstop offset='100%25' stop-color='%238B3A0E'/%3e%3c/linearGradient%3e%3clinearGradient id='e' x1='50%25' x2='50%25' y1='0%25' y2='81.902%25'%3e%3cstop offset='0%25' stop-color='%23FC607C'/%3e%3cstop offset='100%25' stop-color='%23D91F3A'/%3e%3c/linearGradient%3e%3cfilter id='c' width='118.8%25' height='118.8%25' x='-9.4%25' y='-9.4%25' filterUnits='objectBoundingBox'%3e%3cfeGaussianBlur in='SourceAlpha' result='shadowBlurInner1' stdDeviation='1'/%3e%3cfeOffset dy='-1' in='shadowBlurInner1' result='shadowOffsetInner1'/%3e%3cfeComposite in='shadowOffsetInner1' in2='SourceAlpha' k2='-1' k3='1' operator='arithmetic' result='shadowInnerInner1'/%3e%3cfeColorMatrix in='shadowInnerInner1' values='0 0 0 0 0.921365489 0 0 0 0 0.460682745 0 0 0 0 0 0 0 0 0.35 0'/%3e%3c/filter%3e%3cpath id='b' d='M16 8A8 8 0 110 8a8 8 0 0116 0'/%3e%3c/defs%3e%3cg fill='none'%3e%3cuse fill='url(%23a)' xlink:href='%23b'/%3e%3cuse fill='black' filter='url(%23c)' xlink:href='%23b'/%3e%3cpath fill='url(%23d)' d='M3 8.008C3 10.023 4.006 14 8 14c3.993 0 5-3.977 5-5.992C13 7.849 11.39 7 8 7c-3.39 0-5 .849-5 1.008'/%3e%3cpath fill='url(%23e)' d='M4.541 12.5c.804.995 1.907 1.5 3.469 1.5 1.563 0 2.655-.505 3.459-1.5-.551-.588-1.599-1.5-3.459-1.5s-2.917.912-3.469 1.5'/%3e%3cpath fill='%232A3755' d='M6.213 4.144c.263.188.502.455.41.788-.071.254-.194.369-.422.371-.78.011-1.708.255-2.506.612-.065.029-.197.088-.332.085-.124-.003-.251-.058-.327-.237-.067-.157-.073-.388.276-.598.545-.33 1.257-.48 1.909-.604a7.077 7.077 0 00-1.315-.768c-.427-.194-.38-.457-.323-.6.127-.317.609-.196 1.078.026a9 9 0 011.552.925zm3.577 0a8.953 8.953 0 011.55-.925c.47-.222.95-.343 1.078-.026.057.143.104.406-.323.6a7.029 7.029 0 00-1.313.768c.65.123 1.363.274 1.907.604.349.21.342.44.276.598-.077.18-.203.234-.327.237-.135.003-.267-.056-.332-.085-.797-.357-1.725-.6-2.504-.612-.228-.002-.351-.117-.422-.37-.091-.333.147-.6.41-.788z'/%3e%3c/g%3e%3c/svg%3e"
                                             width="18"></li>
                                     <li class="list-react--item__userlike">
-                                        <div style="font-size: 0.9rem; margin-top: 3px; margin-left: 7px;">
+                                        <div class="react-label--normal"
+                                            style="font-size: 0.9rem; margin-top: 3px; margin-left: 7px;">
                                             Auroraphtgrp__ và <b>@{{ v.count_react }}</b>
                                             người
                                             khác</div>
+                                        <div class="react-label">
+                                            <b>@{{ v.count_react }}</b> người
+                                        </div>
                                     </li>
                                     <li class="list-react--item__comment-count">
                                         <div style="font-size: 0.9rem; margin-top: 5px;" class="">
@@ -318,22 +347,22 @@
                                     <template v-if="v.like_status == 0">
                                         <li v-on:click="changeReact(v)" class="btn ps-10 d-flex button-react">
                                             <i class="fa-solid ficon fa-heart button-react--icon text-primary"></i>
-                                            <b class="ms-1 text-primary" style="margin-top: 1px;">Thích</b>
+                                            <b class="ms-1 text-react text-primary" style="margin-top: 1px;">Thích</b>
                                         </li>
                                     </template>
 
                                     <li v-on:click="changeReact(v)" v-else class="btn ps-10 d-flex button-react">
                                         <i class="fa-regular ficon fa-heart button-react--icon"></i>
-                                        <b class="ms-1" style="margin-top: 1px;">Thích</b>
+                                        <b class="ms-1 text-react" style="margin-top: 1px;">Thích</b>
                                     </li>
                                     <li class="btn ps-10 d-flex button-react">
                                         <i class="fa-regular fa-comment button-react--icon"></i>
-                                        <b class="ms-1" style="margin-top: 1px;">Bình
+                                        <b class="ms-1 text-react" style="margin-top: 1px;">Bình
                                             Luận</b>
                                     </li>
                                     <li class="btn ps-10 d-flex button-react">
                                         <i class="fa-solid fa-arrow-up-from-bracket button-react--icon"></i>
-                                        <b class="ms-1" style="margin-top: 1px;">Chia
+                                        <b class="ms-1 text-react" style="margin-top: 1px;">Chia
                                             Sẻ</b>
                                     </li>
                                 </ul>
@@ -430,18 +459,18 @@
                             <button v-on:click="showUploader()" class="select-files btn mt-2 btn-outline-success"
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/a6OjkIIE-R0.png" alt=""
-                                    style="height: 24px; width: 24px;"> Thêm Ảnh</button>
+                                    style="height: 24px; width: 24px;"> <b class="text-react">Thêm Ảnh</b></button>
                             <input type="file" name="" ref="fileInput" v-on:change="handleFileChange"
                                 class="form-control d-none" id="" ref="file">
                             <button class="btn mt-2 btn-outline-primary"
                                 style="padding:8px; margin: auto; margin-right: 4px;"><img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/MqTJr_DM3Jg.png" alt=""
-                                    style="height: 24px; width: 24px;"> Gắn Thẻ </button>
+                                    style="height: 24px; width: 24px;"> <b class="text-react">Gắn Thẻ </b></button>
                             <button class="btn mt-2 btn-outline-warning" style="padding:8px; margin: auto;">
                                 <img class="x1b0d499 xl1xv1r"
                                     src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/yMDS19UDsWe.png" alt=""
-                                    style="height: 24px; width: 24px;"> Cảm xúc / Hoạt
-                                Động </button>
+                                    style="height: 24px; width: 24px;"> <b class="text-react">Cảm xúc / Hoạt
+                                    Động </b></button>
                         </div>
                     </div>
                     <div class="modal-footer d-flex">

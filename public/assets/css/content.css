@@ -252,11 +252,117 @@ margin-left: 55px; */
     /* display: none; */
     transform: translateY(22px);
 }
+.button-group--status {
+    justify-content: space-between;
+}
+.card-newfeed {
+    height: 150px;
+}
 .button-send {
     width: 40px;
     height: 40px;
     background-color: #cccccc4b;
     padding: 0;
 }
+.react-label {
+    display: none;
+}
 .chatbox-animation {
+    transition: 300ms linear(0 0%, 1 100%) all, background;
+}
+.profile_responsive {
+    display: none !important;
+}
+.col-input1 {
+    margin-left: 1rem;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Ví dụ: Điều chỉnh font chữ và độ rộng vùng chính */
+    .center-panel {
+        z-index: 1;
+    }
+    .left-panel {
+        display: none;
+    }
+    .right-panel {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    /* Ví dụ: Điều chỉnh font chữ và độ rộng vùng chính */
+    .center-panel {
+        z-index: 1;
+    }
+    .left-panel {
+        display: none;
+    }
+    .right-panel {
+        display: none;
+    }
+    .route-button {
+        display: none;
+    }
+    .phone-number-mask {
+        display: none;
+    }
+    .search-icon {
+        display: none;
+    }
+    .navbar-container {
+        justify-content: space-between;
+    }
+    .avatar_header {
+        margin-top: 5px;
+    }
+    .button_label {
+        display: none;
+    }
+    .card-newfeed {
+        height: 140px;
+    }
+    .button-group--status {
+        justify-content: space-between;
+    }
+    .col-avatar {
+        flex: 0 0 auto;
+        width: 16.66667%;
+    }
+    .col-input {
+        flex: 1 0 0%;
+        font-size: 0.5rem;
+    }
+    .status-newfeed_create--btn {
+        font-size: 0.8rem;
+    }
+    .text-react {
+        display: none;
+    }
+    .react-label--normal {
+        display: none;
+    }
+    .react-label {
+        display: block;
+        margin-left: 10px;
+        margin-top: 3px;
+    }
+    .col-none {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+    .avatar-group {
+        /* display: none; */
+    }
+    .profile--normal {
+        display: none;
+    }
+    .re-bottom {
+        /* padding-bottom: 30px; */
+    }
+    .btn-group--res {
+        transform: translate(-200px, 100px);
+    }
+    .col-input1 {
+        margin-left: 0;
+        margin-top: 4px;
+    }
 }

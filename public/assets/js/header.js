@@ -13,6 +13,7 @@ $(document).ready(function () {
                     .post('/api/header/header-data',)
                     .then((res) => {
                         this.userInfo = res.data.data;
+                        console.log(this.userInfo);
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function (k, v) {

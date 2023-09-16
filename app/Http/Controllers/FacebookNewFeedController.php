@@ -52,8 +52,10 @@ class FacebookNewFeedController extends Controller
         if ($newfeed) {
             if ($newfeed->like_status == 0) {
                 $newfeed->like_status = 1;
+                $newfeed->count_react--;
             } else {
                 $newfeed->like_status = 0;
+                $newfeed->count_react++;
             }
             $newfeed->save();
         }
@@ -117,7 +119,7 @@ class FacebookNewFeedController extends Controller
             if ($request->picture != '') {
                 $picture = PictureOfUser::create([
                     'id_user' => $idUser,
-                    'picture' => '/' . $request->picture
+                    'picture' => $request->picture
                 ]);
                 $newfeed = FacebookNewFeed::create([
                     'id_user' => $idUser,
@@ -176,7 +178,7 @@ class FacebookNewFeedController extends Controller
         return response()->json([
             'status' => 1,
             'redirect' => route('homepage'),
-            'messag' =>  'Đã Đăng Xuất Thành Công !'
+            'message' =>  'Đã Đăng Xuất Thành Công !'
         ]);
     }
     public function deleteStatus(Request $request)

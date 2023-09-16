@@ -1,13 +1,16 @@
 <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center d-flex"
     data-nav="brand-center">
-    <div class="navbar-container d-flex content text-center" style="">
+    <div class="navbar-container d-flex content text-center" style="padding: 5px;">
         <div class="col-md-3 searchBox d-flex">
             <a href="/new-feed">
-                <i class="fa-brands fa-facebook icon11 me-2" style="color: #2f90e5;"></i>
+                <i class="fa-brands fa-facebook icon11 me-2"
+                    style="color: #2f90e5; font-size: 2.5rem; margin-top: 5px; margin-left: 15px;"></i>
             </a>
             <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control phone-number-mask" placeholder="Tìm Kiếm Trên Facebook">
+                <span class="input-group-text search-icon" style="border: 0;"><i
+                        class="fa-solid fa-magnifying-glass"></i></span>
+                <input style="border: 0;" type="text" class="form-control phone-number-mask"
+                    placeholder="Tìm Kiếm Trên Facebook">
             </div>
         </div>
         <div class="col-md-6 route-social d-flex ">
@@ -185,8 +188,8 @@
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <span class="avatar"><img class="round" v-bind:src="userInfo.avatar" height="40"
-                                width="40"><span class="avatar-status-online"></span></span>
+                        <span class="avatar avatar_header"><img class="round" v-bind:src="userInfo.avatar"
+                                height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                         <a class="dropdown-item" v-bind:href="'/profile/' + userInfo.username">
